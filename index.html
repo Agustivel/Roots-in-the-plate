@@ -3,1108 +3,361 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ספר המתכונים - מבשלים מסלול מחדש</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700;900&display=swap');
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Assistant', sans-serif;
-      background: #fafafa;
-      overflow-x: hidden;
-    }
-
-    /* Landing Page Styles */
-    .landing-page {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #f5f3ef 0%, #e8e4dc 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Decorative Background Elements */
-    .bg-pattern {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.03;
-      background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(139, 69, 19, 0.1) 35px, rgba(139, 69, 19, 0.1) 70px);
-      pointer-events: none;
-    }
-
-    .hero-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Header */
-    .hero-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .hero-title {
-      font-family: 'Frank Ruhl Libre', serif;
-      font-size: 4.5rem;
-      font-weight: 900;
-      color: #2c1810;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      line-height: 1.2;
-    }
-
-    .hero-subtitle {
-      font-size: 1.8rem;
-      color: #6b4423;
-      font-weight: 600;
-      margin-bottom: 2rem;
-    }
-
-    /* Editable Content Box */
-    .content-box {
-      background: white;
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      margin-bottom: 3rem;
-      border: 3px solid #d4a574;
-    }
-
-    .content-title {
-      font-family: 'Frank Ruhl Libre', serif;
-      font-size: 2rem;
-      color: #2c1810;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .content-text {
-      font-size: 1.3rem;
-      line-height: 1.8;
-      color: #4a4a4a;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .highlight-text {
-      color: #8b4513;
-      font-weight: 700;
-    }
-
-    /* Features Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-
-    .feature-card {
-      background: white;
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid #e8dcc8;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-    }
-
-    .feature-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
-    }
-
-    .feature-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #2c1810;
-      margin-bottom: 0.8rem;
-    }
-
-    .feature-description {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    /* CTA Button Section */
-    .cta-section {
-      text-align: center;
-      margin: 4rem 0 2rem;
-      position: relative;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
-      color: white;
-      font-size: 2rem;
-      font-weight: 800;
-      padding: 2rem 4rem;
-      border-radius: 20px;
-      text-decoration: none;
-      box-shadow: 
-        0 15px 40px rgba(139, 69, 19, 0.4),
-        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      font-family: 'Assistant', sans-serif;
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .cta-button:hover::before {
-      left: 100%;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 
-        0 20px 50px rgba(139, 69, 19, 0.5),
-        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    .cta-button:active {
-      transform: translateY(-1px) scale(1.03);
-    }
-
-    .cta-icon {
-      display: inline-block;
-      margin-left: 1rem;
-      font-size: 2.5rem;
-      vertical-align: middle;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
-    }
-
-    .cta-subtext {
-      font-size: 1.2rem;
-      color: #6b4423;
-      margin-top: 1.5rem;
-      font-weight: 600;
-    }
-
-    /* Decorative Spices */
-    .spice-decoration {
-      position: absolute;
-      font-size: 3rem;
-      opacity: 0.15;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .spice-1 { top: 10%; right: 5%; animation-delay: 0s; }
-    .spice-2 { top: 30%; left: 3%; animation-delay: 1s; }
-    .spice-3 { bottom: 20%; right: 8%; animation-delay: 2s; }
-    .spice-4 { bottom: 15%; left: 5%; animation-delay: 1.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(10deg); }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.3rem;
-      }
-
-      .content-box {
-        padding: 2rem;
-      }
-
-      .content-title {
-        font-size: 1.5rem;
-      }
-
-      .content-text {
-        font-size: 1.1rem;
-      }
-
-      .cta-button {
-        font-size: 1.5rem;
-        padding: 1.5rem 3rem;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .spice-decoration {
-        font-size: 2rem;
-      }
-    }
-
-    /* Book Viewer Page (hidden by default) */
-    .book-viewer {
-      display: none;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #f5f3ef 0%, #e8e4dc 100%);
-    }
-
-    .book-viewer.active {
-      display: block;
-    }
-
-    /* All the book viewer styles from previous version... */
-    .app-container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .header {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      padding: 1.5rem 2rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 3px solid #d4a574;
-      position: relative;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .home-btn {
-      position: absolute;
-      right: 0;
-      background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
-      border: none;
-      color: white;
-      padding: 0.7rem 1.5rem;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-      font-family: 'Assistant', sans-serif;
-    }
-
-    .home-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-      background: linear-gradient(135deg, #e0b589 0%, #c4a175 100%);
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        padding: 1.5rem 1rem;
-      }
-      
-      .home-btn {
-        position: static !important;
-        transform: none !important;
-        margin-bottom: 1rem;
-        display: block;
-        width: 100%;
-        max-width: 200px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .header-content {
-        flex-direction: column;
-      }
-    }
-
-    .header-content h1 {
-      color: #2c1810;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      color: #6b4423;
-      font-size: 1rem;
-    }
-
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-      gap: 2rem;
-    }
-
-    .book-container {
-      background: white;
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 
-        0 20px 60px rgba(139, 69, 19, 0.25),
-        0 0 100px rgba(212, 165, 116, 0.15);
-      max-width: 1400px;
-      width: 100%;
-      position: relative;
-      border: 3px solid #d4a574;
-    }
-
-    #book {
-      width: 100%;
-      height: 80vh;
-      min-height: 600px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .controls-bar {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 50px;
-      padding: 1rem 2rem;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      flex-wrap: wrap;
-      position: sticky;
-      bottom: 2rem;
-    }
-
-    .nav-controls, .view-controls {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-
-    .control-btn {
-      background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
-      border: none;
-      color: white;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-    }
-
-    .control-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-      background: linear-gradient(135deg, #e0b589 0%, #c4a175 100%);
-    }
-
-    .control-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .page-indicator {
-      background: linear-gradient(135deg, #f8f6f3, #f0ede8);
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      font-weight: 600;
-      color: #2c1810;
-      font-size: 1.1rem;
-      min-width: 100px;
-      text-align: center;
-      box-shadow: inset 0 2px 4px rgba(139, 69, 19, 0.1);
-      border: 2px solid #d4a574;
-    }
-
-    .separator {
-      margin: 0 0.5rem;
-      color: #b8956a;
-    }
-
-    .thumbnails-panel {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 320px;
-      height: 100vh;
-      background: white;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-      overflow-y: auto;
-    }
-
-    .thumbnails-panel:not(.hidden) {
-      transform: translateX(0);
-    }
-
-    .thumbnails-header {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .close-btn {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-
-    .thumbnails-grid {
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .thumbnail-item {
-      cursor: pointer;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 3px solid transparent;
-      transition: all 0.2s;
-      position: relative;
-      aspect-ratio: 1 / 1.4;
-      background: #f7fafc;
-    }
-
-    .thumbnail-item:hover {
-      border-color: #d4a574;
-      transform: scale(1.05);
-    }
-
-    .thumbnail-item.active {
-      border-color: #8b4513;
-    }
-
-    .thumbnail-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .thumbnail-page-number {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 0.25rem;
-      text-align: center;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, #8b6f47 0%, #6b5232 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.3s ease;
-    }
-
-    .loading-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .spinner {
-      width: 60px;
-      height: 60px;
-      border: 6px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .loading-overlay p {
-      color: white;
-      margin-top: 1.5rem;
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
-
-    .loading-progress {
-      color: white;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-  </style>
+  <title>שורשים בצלחת - מסע קולינרי בעדות ישראל</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+  
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">🍲</span>
+        <span class="logo-text">שורשים בצלחת</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">בית</a></li>
+        <li><a href="#about" class="nav-link">אודות</a></li>
+        <li><a href="book.html" class="nav-link nav-link-book">הספר</a></li>
+        <li><a href="#contact" class="nav-link">צור קשר</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="תפריט">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-  <!-- Landing Page -->
-  <div class="landing-page" id="landing-page">
-    <!-- Decorative Background -->
-    <div class="bg-pattern"></div>
-    
-    <!-- Floating Spices -->
-    <div class="spice-decoration spice-1">🌿</div>
-    <div class="spice-decoration spice-2">🧄</div>
-    <div class="spice-decoration spice-3">🌶️</div>
-    <div class="spice-decoration spice-4">🫒</div>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-background">
+      <div class="hero-pattern"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>📖</span>
+        <span>פרויקט תרבות ומסורת</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-main">שורשים בצלחת</span>
+        <span class="title-sub">מסע קולינרי בעדות ישראל</span>
+      </h1>
+      <p class="hero-description">
+        גלו את הסיפורים, המסורות והטעמים שמאחורי המנות המסורתיות
+        <br>של עדות ישראל השונות במסע קולינרי מרתק ומרגש
+      </p>
+      <div class="hero-buttons">
+        <a href="book.html" class="btn btn-primary">
+          <span>התחילו לקרוא</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+        <a href="#about" class="btn btn-secondary">
+          <span>למדו עוד</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>גללו למטה</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
 
-    <div class="hero-section">
-      <!-- Hero Header -->
-      <div class="hero-header">
-        <h1 class="hero-title">ספר המתכונים המיוחד שלנו</h1>
-        <p class="hero-subtitle">מבשלים מסלול מחדש</p>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">אודות הפרויקט</span>
+        <h2 class="section-title">מסע דרך טעמי הבית</h2>
+        <p class="section-description">
+          ספר המתכונים "שורשים בצלחת" מביא אליכם את העושר התרבותי והקולינרי
+          של עדות ישראל השונות, דרך סיפורים אישיים, מתכונים מסורתיים וצילומים מרהיבים
+        </p>
       </div>
 
-      <!-- Main Content Box (EDITABLE) -->
-      <div class="content-box">
-        <h2 class="content-title">מסע קולינרי מרתק דרך מטבחי ישראל</h2>
-        <p class="content-text">
-          גלו את הטעמים המגוונים של ישראל דרך ספר מתכונים ייחודי זה, 
-          המביא לכם מנות מסורתיות וטעימות מכל עדות ישראל.
-        </p>
-        <p class="content-text">
-          <span class="highlight-text">מאכלים וסיפורים מכל מיני עדות</span> - 
-          פרויקט להסברה ישראלית המציג את העושר התרבותי והקולינרי של ישראל.
-        </p>
-        <p class="content-text">
-          כל מתכון מלווה בסיפור, במסורת ובחוויה של אותה עדה, 
-          ומזמין אתכם לחוות את הטעמים האמיתיים של הבית הישראלי.
-        </p>
-      </div>
-
-      <!-- Features -->
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">🍲</div>
-          <h3 class="feature-title">מתכונים מסורתיים</h3>
-          <p class="feature-description">מנות אותנטיות משמורות במשך דורות מכל עדות ישראל</p>
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">מסורות עשירות</h3>
+          <p class="feature-description">
+            כל מתכון מלווה בסיפור העדה, המסורת המשפחתית והחוויות האישיות
+            שעוברות מדור לדור
+          </p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">📖</div>
-          <h3 class="feature-title">סיפורים עשירים</h3>
-          <p class="feature-description">כל מתכון מלווה בסיפור על המסורת והתרבות</p>
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <h3 class="feature-title">מתכונים מקוריים</h3>
+          <p class="feature-description">
+            מתכונים אותנטיים שנאספו ממשפחות, שמורים במשך שנים
+            והועברו מדור לדור בכתב יד ובעל פה
+          </p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🌍</div>
-          <h3 class="feature-title">מסע תרבותי</h3>
-          <p class="feature-description">טיול קולינרי מרתק דרך ההיסטוריה של עם ישראל</p>
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">היסטוריה חיה</h3>
+          <p class="feature-description">
+            מסע בזמן דרך ההיסטוריה של עם ישראל, התרבויות השונות
+            והשילוב הייחודי שנוצר במדינת ישראל
+          </p>
         </div>
-      </div>
 
-      <!-- CTA Section -->
-      <div class="cta-section">
-        <button class="cta-button" onclick="openBook()">
-          לצפייה בספר המתכונים
-          <span class="cta-icon">📖</span>
-        </button>
-        <p class="cta-subtext">התחילו את המסע הקולינרי שלכם עכשיו</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">מתכונים צמחוניים</h3>
+          <p class="feature-description">
+            כל המתכונים בספר הם צמחוניים ומתאימים לכל המשפחה,
+            עם דגש על בריאות וקיימות
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Book Viewer (Hidden Initially) -->
-  <div class="book-viewer" id="book-viewer">
-    <div class="app-container">
-      <!-- Header -->
-      <header class="header">
-        <div class="header-content">
-          <button class="home-btn" onclick="goHome()">
-            🏠 חזרה למסך הבית
-          </button>
-          <div>
-            <h1>📖 ספר המתכונים - מבשלים מסלול מחדש</h1>
-            <p class="subtitle">מתכונים טעימים מן הצומח</p>
-          </div>
-        </div>
-      </header>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        
-        <!-- Book Container -->
-        <div class="book-container">
-          <div id="book"></div>
-        </div>
-
-        <!-- Controls -->
-        <div class="controls-bar">
-          
-          <!-- Navigation Controls -->
-          <div class="nav-controls">
-            <button id="first" class="control-btn" title="עמוד ראשון">
+  <!-- Preview Section -->
+  <section class="preview">
+    <div class="section-container">
+      <div class="preview-content">
+        <div class="preview-text">
+          <span class="section-label">הצצה לספר</span>
+          <h2 class="section-title">חוויית קריאה אינטראקטיבית</h2>
+          <p class="preview-description">
+            הספר הדיגיטלי שלנו מציע חוויית קריאה ייחודית עם אפשרות להפוך דפים,
+            להגדיל תמונות, לסמן מועדפים ועוד. כל עמוד מעוצב בקפידה ומלא
+            בתמונות, סיפורים ומתכונים מפורטים.
+          </p>
+          <ul class="preview-features">
+            <li>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="11 17 6 12 11 7"></polyline>
-                <polyline points="18 17 13 12 18 7"></polyline>
+                <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
-            </button>
-            
-            <button id="prev" class="control-btn" title="עמוד קודם">
+              <span>הפיכת דפים אנימטיבית וחלקה</span>
+            </li>
+            <li>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
+                <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
-            </button>
-
-            <div class="page-indicator">
-              <span id="current-page">1</span>
-              <span class="separator">/</span>
-              <span id="total-pages">--</span>
+              <span>תמיכה מלאה במסכי מגע ומובייל</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>אפשרות הורדה ושמירה לצפייה אופליין</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>ניווט קל עם תפריט תמונות ממוזערות</span>
+            </li>
+          </ul>
+          <a href="book.html" class="btn btn-primary">
+            <span>פתחו את הספר</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="preview-image">
+          <div class="book-mockup">
+            <div class="book-cover">
+              <div class="book-spine"></div>
+              <div class="book-front">
+                <div class="book-title">שורשים<br>בצלחת</div>
+                <div class="book-icon">🍲</div>
+              </div>
             </div>
-
-            <button id="next" class="control-btn" title="עמוד הבא">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-
-            <button id="last" class="control-btn" title="עמוד אחרון">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="13 17 18 12 13 7"></polyline>
-                <polyline points="6 17 11 12 6 7"></polyline>
-              </svg>
-            </button>
           </div>
-
-          <!-- View Controls -->
-          <div class="view-controls">
-            
-            <button id="zoom-out" class="control-btn" title="הקטן">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="8" y1="11" x2="14" y2="11"></line>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </button>
-
-            <button id="zoom-in" class="control-btn" title="הגדל">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="8" y1="11" x2="14" y2="11"></line>
-                <line x1="11" y1="8" x2="11" y2="14"></line>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              </button>
-
-            <button id="fullscreen" class="control-btn" title="מסך מלא">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
-              </svg>
-            </button>
-
-            <button id="thumbnails" class="control-btn" title="תמונות ממוזערות">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
-            </button>
-
-            <button id="download" class="control-btn" title="הורד PDF">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-            </button>
-          </div>
-
         </div>
-
       </div>
-
-      <!-- Thumbnails Panel -->
-      <div id="thumbnails-panel" class="thumbnails-panel hidden">
-        <div class="thumbnails-header">
-          <h3>תמונות ממוזערות</h3>
-          <button id="close-thumbnails" class="close-btn">✕</button>
-        </div>
-        <div id="thumbnails-grid" class="thumbnails-grid"></div>
-      </div>
-
-      <!-- Loading Overlay -->
-      <div id="loading" class="loading-overlay hidden">
-        <div class="spinner"></div>
-        <p>טוען את ספר המתכונים...</p>
-        <p class="loading-progress" id="progress-text">מכין את הדפים...</p>
-      </div>
-
     </div>
-  </div>
+  </section>
 
-  <!-- PDF.js and PageFlip Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
-  
-  <script>
-    // Configure PDF.js
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  <!-- Communities Section -->
+  <section class="communities">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">עדות ישראל</span>
+        <h2 class="section-title">מסע בין התרבויות</h2>
+        <p class="section-description">
+          הספר כולל מתכונים וסיפורים מעדות שונות, כל אחת עם הטעמים והמסורות הייחודיות שלה
+        </p>
+      </div>
 
-    let pageFlip;
-    let currentZoom = 1;
-    const MIN_ZOOM = 0.5;
-    const MAX_ZOOM = 2;
-    const ZOOM_STEP = 0.25;
-    let pageImages = [];
-    let bookInitialized = false;
-
-    // Open book function
-    function openBook() {
-      document.getElementById('landing-page').style.display = 'none';
-      document.getElementById('book-viewer').classList.add('active');
-      
-      if (!bookInitialized) {
-        initBook();
-        bookInitialized = true;
-      }
-    }
-
-    // Go back to home function
-    function goHome() {
-      document.getElementById('book-viewer').classList.remove('active');
-      document.getElementById('landing-page').style.display = 'block';
-      
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    async function initBook() {
-      try {
-        showLoading(true);
-        await convertPDFToImages();
-        await initPageFlip();
-        setupEventListeners();
-        generateThumbnails();
-        showLoading(false);
-      } catch (error) {
-        console.error('Error:', error);
-        showError(error.message);
-      }
-    }
-
-    async function convertPDFToImages() {
-      try {
-        updateProgress('טוען את ה-PDF...');
-        
-        const loadingTask = pdfjsLib.getDocument('book.pdf');
-        const pdf = await loadingTask.promise;
-        
-        const totalPages = pdf.numPages;
-        document.getElementById('total-pages').textContent = totalPages;
-        
-        updateProgress(`ממיר ${totalPages} דפים לתמונות באיכות גבוהה...`);
-        
-        // Higher quality - scale 3 instead of 2
-        for (let i = 1; i <= totalPages; i++) {
-          updateProgress(`מעבד עמוד ${i} מתוך ${totalPages}...`);
-          
-          const page = await pdf.getPage(i);
-          const scale = 4; // EVEN HIGHER QUALITY!
-          const viewport = page.getViewport({ scale: scale });
-          
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          
-          await page.render({
-            canvasContext: context,
-            viewport: viewport
-          }).promise;
-          
-          // Use even higher quality JPEG (0.98!)
-          const imageUrl = canvas.toDataURL('image/jpeg', 0.98);
-          pageImages.push(imageUrl);
-        }
-        
-        updateProgress('סיים המרה! מכין את הספר...');
-        
-      } catch (error) {
-        throw new Error('לא ניתן לטעון את ה-PDF. ודא שהקובץ book.pdf קיים בתיקייה ושאתה משתמש בשרת מקומי');
-      }
-    }
-
-    function initPageFlip() {
-      const bookElement = document.getElementById('book');
-      
-      pageFlip = new St.PageFlip(bookElement, {
-        width: 550,
-        height: 733,
-        size: 'stretch',
-        minWidth: 315,
-        maxWidth: 1000,
-        minHeight: 400,
-        maxHeight: 1350,
-        maxShadowOpacity: 0.5,
-        showCover: true,
-        mobileScrollSupport: false,
-        useMouseEvents: true,
-        swipeDistance: 30,
-        clickEventForward: true,
-        flippingTime: 1000,
-        autoSize: true,
-        rtl: true,
-        startPage: 0,
-        drawShadow: true,
-        usePortrait: true,
-      });
-
-      pageFlip.loadFromImages(pageImages);
-
-      pageFlip.on('flip', (e) => {
-        updatePageIndicator(e.data);
-        updateActiveThumbnail(e.data);
-      });
-
-      pageFlip.on('changeState', (e) => {
-        updateNavigationButtons();
-      });
-    }
-
-    function generateThumbnails() {
-      const thumbnailsGrid = document.getElementById('thumbnails-grid');
-      thumbnailsGrid.innerHTML = '';
-      
-      pageImages.forEach((imageUrl, index) => {
-        const thumbnailItem = document.createElement('div');
-        thumbnailItem.className = 'thumbnail-item';
-        if (index === 0) thumbnailItem.classList.add('active');
-        
-        const img = document.createElement('img');
-        img.src = imageUrl;
-        img.alt = `עמוד ${index + 1}`;
-        
-        thumbnailItem.appendChild(img);
-        
-        const pageNumber = document.createElement('div');
-        pageNumber.className = 'thumbnail-page-number';
-        pageNumber.textContent = `עמוד ${index + 1}`;
-        thumbnailItem.appendChild(pageNumber);
-        
-        thumbnailItem.addEventListener('click', () => {
-          pageFlip.turnToPage(index);
-          if (window.innerWidth < 768) {
-            toggleThumbnails();
-          }
-        });
-        
-        thumbnailsGrid.appendChild(thumbnailItem);
-      });
-    }
-
-    function setupEventListeners() {
-      document.getElementById('first').addEventListener('click', () => pageFlip.turnToPage(0));
-      document.getElementById('prev').addEventListener('click', () => pageFlip.flipPrev());
-      document.getElementById('next').addEventListener('click', () => pageFlip.flipNext());
-      document.getElementById('last').addEventListener('click', () => pageFlip.turnToPage(pageFlip.getPageCount() - 1));
-      document.getElementById('zoom-in').addEventListener('click', zoomIn);
-      document.getElementById('zoom-out').addEventListener('click', zoomOut);
-      document.getElementById('fullscreen').addEventListener('click', toggleFullscreen);
-      document.getElementById('thumbnails').addEventListener('click', toggleThumbnails);
-      document.getElementById('close-thumbnails').addEventListener('click', toggleThumbnails);
-      document.getElementById('download').addEventListener('click', downloadPDF);
-
-      document.addEventListener('keydown', (e) => {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-        switch(e.key) {
-          case 'ArrowLeft': pageFlip.flipNext(); e.preventDefault(); break;
-          case 'ArrowRight': pageFlip.flipPrev(); e.preventDefault(); break;
-          case 'Home': pageFlip.turnToPage(0); e.preventDefault(); break;
-          case 'End': pageFlip.turnToPage(pageFlip.getPageCount() - 1); e.preventDefault(); break;
-          case 'f': case 'F': toggleFullscreen(); break;
-          case 't': case 'T': toggleThumbnails(); break;
-          case '+': case '=': zoomIn(); e.preventDefault(); break;
-          case '-': case '_': zoomOut(); e.preventDefault(); break;
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        clearTimeout(window.resizeTimeout);
-        window.resizeTimeout = setTimeout(() => {
-          if (pageFlip) pageFlip.updateState();
-        }, 200);
-      });
-    }
-
-    function updatePageIndicator(pageNum) {
-      document.getElementById('current-page').textContent = pageNum + 1;
-    }
-
-    function updateNavigationButtons() {
-      const currentPage = pageFlip.getCurrentPageIndex();
-      const totalPages = pageFlip.getPageCount();
-      document.getElementById('first').disabled = currentPage === 0;
-      document.getElementById('prev').disabled = currentPage === 0;
-      document.getElementById('next').disabled = currentPage >= totalPages - 1;
-      document.getElementById('last').disabled = currentPage >= totalPages - 1;
-      document.getElementById('zoom-in').disabled = currentZoom >= MAX_ZOOM;
-      document.getElementById('zoom-out').disabled = currentZoom <= MIN_ZOOM;
-    }
-
-    function updateActiveThumbnail(pageNum) {
-      const thumbnails = document.querySelectorAll('.thumbnail-item');
-      thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === pageNum);
-      });
-    }
-
-    function zoomIn() {
-      if (currentZoom < MAX_ZOOM) {
-        currentZoom = Math.min(currentZoom + ZOOM_STEP, MAX_ZOOM);
-        applyZoom();
-      }
-    }
-
-    function zoomOut() {
-      if (currentZoom > MIN_ZOOM) {
-        currentZoom = Math.max(currentZoom - ZOOM_STEP, MIN_ZOOM);
-        applyZoom();
-      }
-    }
-
-    function applyZoom() {
-      document.querySelector('.book-container').style.transform = `scale(${currentZoom})`;
-      document.querySelector('.book-container').style.transformOrigin = 'center top';
-      updateNavigationButtons();
-    }
-
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.querySelector('.app-container').requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
-    }
-
-    function toggleThumbnails() {
-      document.getElementById('thumbnails-panel').classList.toggle('hidden');
-    }
-
-    function downloadPDF() {
-      const link = document.createElement('a');
-      link.href = 'book.pdf';
-      link.download = 'ספר_המתכונים.pdf';
-      link.click();
-    }
-
-    function showLoading(show) {
-      const loading = document.getElementById('loading');
-      if (show) {
-        loading.classList.remove('hidden');
-      } else {
-        setTimeout(() => loading.classList.add('hidden'), 500);
-      }
-    }
-
-    function updateProgress(text) {
-      document.getElementById('progress-text').textContent = text;
-    }
-
-    function showError(message) {
-      const loading = document.getElementById('loading');
-      loading.innerHTML = `
-        <div style="text-align: center; color: white; max-width: 600px; padding: 2rem;">
-          <div style="font-size: 4rem; margin-bottom: 1rem;">⚠️</div>
-          <h2 style="font-size: 2rem; margin-bottom: 1rem;">שגיאה בטעינת הספר</h2>
-          <p style="font-size: 1.2rem; margin-bottom: 2rem;">${message}</p>
-          <button onclick="location.reload()" style="margin-top: 2rem; background: white; color: #2c3e50; border: none; padding: 1rem 2rem; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">נסה שוב</button>
+      <div class="communities-grid">
+        <div class="community-card">
+          <div class="community-pattern pattern-1"></div>
+          <h3>מרוקו</h3>
+          <p>תבשילים עשירים בתבלינים ומסורות עתיקות</p>
         </div>
-      `;
-      showLoading(false);
-    }
+        <div class="community-card">
+          <div class="community-pattern pattern-2"></div>
+          <h3>תימן</h3>
+          <p>מנות חריפות ומתובלות עם היסטוריה עשירה</p>
+        </div>
+        <div class="community-card">
+          <div class="community-pattern pattern-3"></div>
+          <h3>עיראק</h3>
+          <p>מטבח עשיר וטעמים אותנטיים</p>
+        </div>
+        <div class="community-card">
+          <div class="community-pattern pattern-4"></div>
+          <h3>פולין</h3>
+          <p>מנות מסורתיות ונוסטלגיות</p>
+        </div>
+        <div class="community-card">
+          <div class="community-pattern pattern-5"></div>
+          <h3>טורקיה</h3>
+          <p>שילוב ים תיכוני עם טעמים מזרחיים</p>
+        </div>
+        <div class="community-card">
+          <div class="community-pattern pattern-6"></div>
+          <h3>אתיופיה</h3>
+          <p>מנות ייחודיות עם תרבות עשירה</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // Touch gestures
-    let touchStartX = 0;
-    document.getElementById('book').addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-    });
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2 class="cta-title">מוכנים להתחיל את המסע?</h2>
+      <p class="cta-description">
+        הצטרפו אלינו למסע קולינרי מרתק דרך עדות ישראל ותגלו את הסיפורים
+        והטעמים שמאחורי המנות המסורתיות
+      </p>
+      <a href="book.html" class="btn btn-cta">
+        <span>פתחו את הספר עכשיו</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-    document.getElementById('book').addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diff = touchStartX - touchEndX;
-      
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          pageFlip.flipPrev();
-        } else {
-          pageFlip.flipNext();
-        }
-      }
-    });
-  </script>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">צרו קשר</span>
+        <h2 class="section-title">נשמח לשמוע מכם</h2>
+        <p class="section-description">
+          יש לכם שאלות, הצעות או סיפורים משלכם? נשמח לשמוע
+        </p>
+      </div>
 
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h4>דוא"ל</h4>
+              <p>info@rootsintheplate.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div>
+              <h4>מיקום</h4>
+              <p>תל אביב, ישראל</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <span class="logo-icon">🍲</span>
+            <span class="logo-text">שורשים בצלחת</span>
+          </div>
+          <p class="footer-tagline">מסע קולינרי בעדות ישראל</p>
+        </div>
+        <div class="footer-section">
+          <h4>קישורים</h4>
+          <ul>
+            <li><a href="#home">בית</a></li>
+            <li><a href="#about">אודות</a></li>
+            <li><a href="book.html">הספר</a></li>
+            <li><a href="#contact">צור קשר</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>עקבו אחרינו</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"></line>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 שורשים בצלחת. כל הזכויות שמורות.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
