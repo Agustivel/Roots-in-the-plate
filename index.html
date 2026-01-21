@@ -411,6 +411,11 @@
       z-index: 100;
       border-bottom: 2px solid var(--accent-gold);
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
     }
 
     .top-action-bar h1 {
@@ -422,6 +427,31 @@
       justify-content: center;
       gap: 0.8rem;
       margin: 0;
+    }
+
+    .top-instagram-icon {
+      position: absolute;
+      left: 2rem;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 2px 10px rgba(188, 24, 136, 0.3);
+    }
+
+    .top-instagram-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 20px rgba(188, 24, 136, 0.5);
+    }
+
+    .top-instagram-icon i {
+      color: white;
+      font-size: 1.4rem;
     }
 
     .main-content {
@@ -694,6 +724,66 @@
       50% { transform: scale(1.2); }
     }
 
+    /* Instagram Link */
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(188, 24, 136, 0.3);
+    }
+
+    .instagram-link:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(188, 24, 136, 0.5);
+    }
+
+    .instagram-link i {
+      font-size: 1.5rem;
+    }
+
+    /* Floating Instagram Button */
+    .floating-instagram {
+      position: fixed;
+      bottom: 120px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
+      z-index: 999;
+      transition: var(--transition);
+      text-decoration: none;
+      animation: float-instagram 3s ease-in-out infinite;
+    }
+
+    .floating-instagram:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 30px rgba(188, 24, 136, 0.6);
+    }
+
+    .floating-instagram i {
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    @keyframes float-instagram {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     /* Mobile */
     @media (max-width: 768px) {
       body, a, button {
@@ -811,6 +901,36 @@
       .footer-logo {
         font-size: 2.5rem;
       }
+
+      .instagram-link {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .instagram-link i {
+        font-size: 1.3rem;
+      }
+
+      .floating-instagram {
+        width: 50px;
+        height: 50px;
+        bottom: 100px;
+        left: 10px;
+      }
+
+      .floating-instagram i {
+        font-size: 1.5rem;
+      }
+
+      .top-instagram-icon {
+        width: 38px;
+        height: 38px;
+        left: 1rem;
+      }
+
+      .top-instagram-icon i {
+        font-size: 1.2rem;
+      }
     }
 
     .hidden {
@@ -896,12 +1016,19 @@
         <div class="footer-logo">🌿</div>
         <h3 class="footer-title">Roots in the Plate</h3>
         <p class="footer-tagline">מסע קולינרי בתרבות ישראל</p>
+        
+        <!-- Instagram Link -->
+        <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="instagram-link">
+          <i class="fab fa-instagram"></i>
+          <span>עקבו אחרינו באינסטגרם</span>
+        </a>
+        
         <div class="footer-divider"></div>
         <p class="footer-credits">
-          תלמידי בית ספר גוונים במסגרת תוכנית TEEN SPIRIT
+          פרויקט תלמידי במסגרת קורס תכנות ועיצוב UI/UX
         </p>
         <p class="footer-copyright">
-          נוצר עם <span class="footer-heart">❤️</span> ב © 2025 Roots in the Plate Team
+          נוצר עם <span class="footer-heart">❤️</span> בישראל © 2025 Roots in the Plate Team
         </p>
       </div>
     </footer>
@@ -910,11 +1037,19 @@
   <div class="book-viewer" id="book-viewer">
     <div class="app-container">
       
+      <!-- Floating Instagram Button -->
+      <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="floating-instagram" title="עקבו אחרינו באינסטגרם">
+        <i class="fab fa-instagram"></i>
+      </a>
+      
       <div class="top-action-bar">
         <h1>
           <i class="fas fa-book"></i>
           Roots in the Plate - ספר המתכונים הדיגיטלי
         </h1>
+        <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="top-instagram-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
 
       <div class="main-content">
