@@ -9,7 +9,7 @@
   <meta name="description" content="גלו את העושר התרבותי של ישראל דרך מתכונים מסורתיים מכל עדות ישראל. ספר מתכונים דיגיטלי אינטראקטיבי עם סיפורים וטעמים אותנטיים.">
   <meta name="keywords" content="מתכונים ישראליים, אוכל מסורתי, עדות ישראל, תרבות ישראלית">
   <meta name="author" content="Roots in the Plate Team">
-
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agustivel.github.io/Roots-in-the-plate/">
@@ -72,6 +72,84 @@
 
     a, button {
       cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E👆%3C/text%3E%3C/svg%3E"), pointer;
+    }
+
+    /* Navigation Menu - Smart & Unobtrusive */
+    .nav-menu {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-menu:hover {
+      opacity: 1;
+    }
+
+    .nav-menu.scrolled {
+      opacity: 1;
+    }
+
+    .nav-container {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      background: rgba(85, 107, 47, 0.85);
+      backdrop-filter: blur(15px);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(85, 107, 47, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: rgba(85, 107, 47, 0.85);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(85, 107, 47, 0.25);
+      transition: var(--transition);
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.05);
+      background: rgba(85, 107, 47, 0.95);
+    }
+
+    .nav-mobile {
+      display: none;
     }
 
     /* Loader */
@@ -177,7 +255,8 @@
 
     .hero-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
+      padding-top: 2rem;
     }
 
     .hero-title {
@@ -185,17 +264,20 @@
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 900;
       color: var(--primary-dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       text-shadow: 2px 4px 12px rgba(61, 43, 31, 0.15);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      padding: 0 1rem;
     }
 
     .hero-subtitle {
       font-size: clamp(1.2rem, 3vw, 2rem);
       color: var(--primary-olive);
       font-weight: 600;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      padding: 0 1rem;
+      line-height: 1.4;
     }
 
     .content-box {
@@ -203,9 +285,9 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-radius: var(--radius);
-      padding: 3rem;
+      padding: 3.5rem;
       box-shadow: var(--shadow-xl);
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
       border: 1px solid rgba(255, 255, 255, 0.5);
       transition: var(--transition);
     }
@@ -219,17 +301,22 @@
       font-family: 'Heebo', sans-serif;
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       color: var(--primary-dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       font-weight: 700;
       text-align: center;
+      line-height: 1.3;
     }
 
     .content-text {
       font-size: clamp(1.1rem, 2vw, 1.4rem);
-      line-height: 1.8;
+      line-height: 1.9;
       color: var(--primary-dark);
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-text:last-child {
+      margin-bottom: 0;
     }
 
     .highlight-text {
@@ -253,15 +340,15 @@
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
+      gap: 2.5rem;
+      margin: 4rem 0;
     }
 
     .feature-card {
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
       border-radius: var(--radius);
-      padding: 2.5rem;
+      padding: 3rem 2rem;
       text-align: center;
       box-shadow: var(--shadow-md);
       transition: var(--transition);
@@ -292,8 +379,8 @@
     }
 
     .feature-icon {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
+      font-size: 4.5rem;
+      margin-bottom: 1.8rem;
       color: var(--primary-olive);
       filter: drop-shadow(0 4px 12px rgba(85, 107, 47, 0.2));
       transition: var(--transition);
@@ -304,22 +391,24 @@
     }
 
     .feature-title {
-      font-size: 1.6rem;
-      font-weight: 700;
+      font-size: 1.7rem;
+      font-weight: 800;
       color: var(--primary-dark);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
     }
 
     .feature-description {
       font-size: 1.15rem;
       color: #4a4a4a;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .cta-section {
       text-align: center;
-      margin: 4rem 0 3rem;
+      margin: 5rem 0 4rem;
       position: relative;
+      padding: 2rem 0;
     }
 
     .cta-button {
@@ -330,7 +419,7 @@
       color: var(--white);
       font-size: 2.2rem;
       font-weight: 800;
-      padding: 1.8rem 4rem;
+      padding: 2rem 4.5rem;
       border-radius: 50px;
       text-decoration: none;
       box-shadow: 
@@ -360,7 +449,7 @@
     }
 
     .cta-button:hover {
-      transform: translateY(-4px) scale(1.05);
+      transform: translateY(-6px) scale(1.05);
       box-shadow: 
         0 20px 48px rgba(85, 107, 47, 0.5),
         inset 0 -4px 0 rgba(0, 0, 0, 0.15);
@@ -378,10 +467,11 @@
     }
 
     .cta-subtext {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--primary-olive);
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     /* Book Viewer */
@@ -393,6 +483,116 @@
 
     .book-viewer.active {
       display: block;
+    }
+
+    /* About Us Page */
+    .about-page {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-sand) 100%);
+    }
+
+    .about-page.active {
+      display: block;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .about-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--primary-olive);
+      font-weight: 600;
+    }
+
+    .about-content {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 3rem;
+      box-shadow: var(--shadow-xl);
+      margin-bottom: 3rem;
+    }
+
+    .about-section {
+      margin-bottom: 3rem;
+    }
+
+    .about-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .about-section-title i {
+      color: var(--primary-olive);
+      font-size: 2rem;
+    }
+
+    .about-text {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .team-name {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-role {
+      color: var(--primary-olive);
+      font-size: 0.95rem;
     }
 
     .app-container {
@@ -724,7 +924,7 @@
       50% { transform: scale(1.2); }
     }
 
-    /* Instagram Link */
+    /* Instagram Link in Footer */
     .instagram-link {
       display: inline-flex;
       align-items: center;
@@ -794,21 +994,56 @@
         padding: 2rem 20px;
       }
 
+      .hero-header {
+        margin-bottom: 3rem;
+        padding-top: 1rem;
+      }
+
+      .hero-title {
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+      }
+
+      .hero-subtitle {
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+      }
+
       .content-box {
-        padding: 2rem 20px;
+        padding: 2.5rem 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .content-title {
+        margin-bottom: 1.5rem;
+      }
+
+      .content-text {
+        margin-bottom: 1.2rem;
       }
 
       .features-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
+        margin: 3rem 0;
       }
 
       .feature-card {
-        padding: 2rem 20px;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .feature-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-title {
+        font-size: 1.5rem;
       }
 
       .cta-section {
-        padding: 0 20px;
+        padding: 1.5rem 20px;
+        margin: 3rem 0 2rem;
       }
 
       .cta-button {
@@ -931,6 +1166,87 @@
       .top-instagram-icon i {
         font-size: 1.2rem;
       }
+
+      /* Mobile Navigation */
+      .nav-menu {
+        top: 1rem;
+        right: 1rem;
+        opacity: 1;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-mobile {
+        display: none;
+        position: fixed;
+        top: 70px;
+        right: 1rem;
+        background: rgba(85, 107, 47, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 1.2rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(85, 107, 47, 0.3);
+        z-index: 999;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-width: 180px;
+      }
+
+      .nav-mobile.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .nav-mobile-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .nav-mobile-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+        border-radius: 10px;
+        transition: var(--transition);
+        display: block;
+        text-align: center;
+      }
+
+      .nav-mobile-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .about-container {
+        padding: 2rem 1rem;
+      }
+
+      .about-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .hidden {
@@ -944,6 +1260,30 @@
   </style>
 </head>
 <body>
+
+  <!-- Navigation Menu - Minimalist -->
+  <nav class="nav-menu" id="navMenu">
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a class="nav-link" onclick="showHome()">בית</a></li>
+        <li><a class="nav-link" onclick="openBook()">ספר מתכונים</a></li>
+        <li><a class="nav-link" onclick="showAbout()">על הפרויקט</a></li>
+      </ul>
+
+      <button class="menu-toggle" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile" id="navMobile">
+      <ul class="nav-mobile-links">
+        <li><a class="nav-mobile-link" onclick="showHome(); toggleMobileMenu();">בית</a></li>
+        <li><a class="nav-mobile-link" onclick="openBook(); toggleMobileMenu();">ספר מתכונים</a></li>
+        <li><a class="nav-mobile-link" onclick="showAbout(); toggleMobileMenu();">על הפרויקט</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="custom-loader" id="customLoader">
     <div class="loader-pot">
@@ -973,11 +1313,11 @@
           כל מתכון בספר זה הוא חלון לתרבות, למסורת ולזיכרון קולקטיבי.
         </p>
         <p class="content-text">
-          <span class="highlight-text">מהתימנים ועד המרוקאים</span>, 
+          מהתימנים ועד המרוקאים, 
           מהאתיופים ועד הפולנים - כל עדה תרמה את חלקה לפסיפס התרבותי והקולינרי של ישראל.
         </p>
         <p class="content-text">
-          זהו לא רק ספר מתכונים - זהו סיפור על שורשים, על זהות, ועל הקסם של האוכל המסורתי
+          <span class="highlight-text">זהו לא רק ספר מתכונים</span> - זהו סיפור על שורשים, על זהות, ועל הקסם של האוכל המסורתי
           שעובר מדור לדור.
         </p>
       </div>
@@ -1005,7 +1345,7 @@
       <div class="cta-section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
         <button class="cta-button" onclick="openBook()">
           לצפייה בספר הדיגיטלי
-          
+          <i class="fas fa-book-reader cta-icon"></i>
         </button>
         <p class="cta-subtext">התחילו את המסע הקולינרי שלכם עכשיו</p>
       </div>
@@ -1034,6 +1374,133 @@
     </footer>
   </div>
 
+  <!-- About Us Page -->
+  <div class="about-page" id="about-page">
+    <div class="about-container">
+      <div class="about-header" data-aos="fade-down">
+        <h1 class="about-title">על הפרויקט</h1>
+        <p class="about-subtitle">מסע קולינרי שמספר את סיפורה של ישראל</p>
+      </div>
+
+      <div class="about-content" data-aos="fade-up">
+        <div class="about-section">
+          <h2 class="about-section-title">
+            <i class="fas fa-heart"></i>
+            למה קולינריה?
+          </h2>
+          <p class="about-text">
+            אוכל הוא השפה האוניברסלית שכולם מבינים. לא משנה מאיפה אתה מגיע, מה השפה שלך
+            או מה התרבות שלך - כולם אוכלים, כולם מתחברים לטעמים, וכולם יודעים שמאחורי כל מנה
+            יש סיפור.
+          </p>
+          <p class="about-text">
+            בחרנו ליצור ספר מתכונים דיגיטלי כי רצינו להראות את ישראל בצורה שונה -
+            לא דרך פוליטיקה או חדשות, אלא דרך המטבח המגוון והעשיר שלנו.
+            כשמישהו מבשל חמין תימני או קובה עיראקית, הוא לא רק מכין אוכל -
+            הוא חווה חתיכה מהתרבות הישראלית.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-section-title">
+            <i class="fas fa-globe"></i>
+            הסיפור של ישראל
+          </h2>
+          <p class="about-text">
+            ישראל היא מדינה ייחודית - מדינה שקלטה יהודים מכל רחבי העולם.
+            כל עדה הביאה איתה את המטבח שלה, את המתכונים שעברו מדור לדור,
+            ואת הטעמים של הבית.
+          </p>
+          <p class="about-text">
+            מתכונים תימניים שהגיעו מתימן, מרוקאים שהגיעו ממרוקו, אתיופיים מאתיופיה,
+            פולניים מפולין - כל המתכונים האלה נפגשו כאן, בישראל, ויצרו את הפסיפס
+            הקולינרי המדהים שלנו.
+          </p>
+          <p class="about-text">
+            זה הסיפור של ישראל במטבח - מדינה שמאחדת תרבויות שונות תחת קורת גג אחת,
+            שומרת על המסורות של כל עדה ועדה, ויוצרת משהו חדש ומיוחד.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-section-title">
+            <i class="fas fa-book-open"></i>
+            על הספר
+          </h2>
+          <p class="about-text">
+            "Roots in the Plate" (שורשים בצלחת) הוא ספר מתכונים דיגיטלי שמציג
+            מתכונים מסורתיים מכל עדות ישראל. כל מתכון מלווה בסיפור על המקור שלו,
+            על התרבות שממנה הגיע, ועל המשמעות שלו.
+          </p>
+          <p class="about-text">
+            הספר מאפשר לכל אחד בעולם לחוות את המגוון התרבותי של ישראל דרך המטבח -
+            להבין שישראל היא לא רק מקום אחד עם תרבות אחת, אלא פסיפס עשיר של תרבויות,
+            שפות, מסורות וטעמים.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-section-title">
+            <i class="fas fa-hands-helping"></i>
+            למה זה חשוב?
+          </h2>
+          <p class="about-text">
+            בעולם של היום, הרבה אנשים לא באמת מכירים את ישראל. הם רואים כותרות בחדשות
+            אבל לא מכירים את האנשים, את התרבות, את החיים האמיתיים כאן.
+          </p>
+          <p class="about-text">
+            דרך המתכונים האלה, אנחנו מראים את הצד האנושי והתרבותי של ישראל.
+            אנחנו מספרים סיפורים שמחברים, שמראים את העושר והמגוון,
+            ושעוזרים לאנשים להבין שישראל היא מדינה של אנשים - אנשים עם סיפורים,
+            עם מסורות, ועם מתכונים שעוברים מדור לדור.
+          </p>
+          <p class="about-text">
+            כשמישהו בעולם מבשל מתכון מהספר שלנו, הוא לא רק מכין ארוחה -
+            הוא מתחבר לסיפור של ישראל בצורה אותנטית ואמיתית.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-section-title">
+            <i class="fas fa-star"></i>
+            המטרה שלנו
+          </h2>
+          <p class="about-text">
+            אנחנו רוצים שאנשים בכל העולם יכירו את ישראל דרך המטבח המדהים שלנו.
+            שיבינו את הגיוון התרבותי שלנו. שיראו שישראל היא מדינה של תרבויות רבות
+            שחיות ביחד, שומרות על המסורות שלהן, ויוצרות משהו חדש ומיוחד.
+          </p>
+          <p class="about-text">
+            אנחנו מאמינים שכשמסבירים את ישראל דרך אוכל, דרך סיפורים אנושיים ותרבותיים,
+            אנשים יכולים להתחבר ולהבין אותנו טוב יותר.
+            וזה מה שהפרויקט הזה עושה - מספר את הסיפור של ישראל בצורה שכולם יכולים להתחבר אליה.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="premium-footer">
+      <div class="footer-content">
+        <div class="footer-logo">🌿</div>
+        <h3 class="footer-title">Roots in the Plate</h3>
+        <p class="footer-tagline">מסע קולינרי בתרבות ישראל</p>
+        
+        <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="instagram-link">
+          <i class="fab fa-instagram"></i>
+          <span>עקבו אחרינו באינסטגרם</span>
+        </a>
+        
+        <div class="footer-divider"></div>
+        <p class="footer-credits">
+          פרויקט תלמידי במסגרת קורס תכנות ועיצוב UI/UX
+        </p>
+        <p class="footer-copyright">
+          נוצר עם <span class="footer-heart">❤️</span> בישראל © 2025 Roots in the Plate Team
+        </p>
+      </div>
+    </footer>
+  </div>
+
   <div class="book-viewer" id="book-viewer">
     <div class="app-container">
       
@@ -1044,11 +1511,12 @@
       
       <div class="top-action-bar">
         <h1>
-
+          <i class="fas fa-book"></i>
           Roots in the Plate - ספר המתכונים הדיגיטלי
         </h1>
-        
-
+        <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="top-instagram-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
 
       <div class="main-content">
@@ -1144,8 +1612,34 @@
       pdfDocument = null;
       
       document.getElementById('book-viewer').classList.remove('active');
+      document.getElementById('about-page').classList.remove('active');
       document.getElementById('landing-page').style.display = 'block';
+      document.getElementById('navMenu').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showHome() {
+      document.getElementById('book-viewer').classList.remove('active');
+      document.getElementById('about-page').classList.remove('active');
+      document.getElementById('landing-page').style.display = 'block';
+      document.getElementById('navMenu').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showAbout() {
+      document.getElementById('landing-page').style.display = 'none';
+      document.getElementById('book-viewer').classList.remove('active');
+      document.getElementById('about-page').classList.add('active');
+      document.getElementById('navMenu').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Reinitialize AOS for about page
+      setTimeout(() => AOS.refresh(), 100);
+    }
+
+    function toggleMobileMenu() {
+      const navMobile = document.getElementById('navMobile');
+      navMobile.classList.toggle('active');
     }
 
     async function initBook(retry = 0) {
@@ -1388,6 +1882,21 @@
       window.resizeTimeout = setTimeout(() => {
         isMobile = window.innerWidth <= 768;
       }, 300);
+    });
+    
+    // Smart navigation - fade in on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const navMenu = document.getElementById('navMenu');
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        navMenu.classList.add('scrolled');
+      } else {
+        navMenu.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
     });
     
     if (performance.memory) {
