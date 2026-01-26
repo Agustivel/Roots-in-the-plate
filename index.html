@@ -38,6 +38,12 @@
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
+  <!-- jQuery (required for Turn.js) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Turn.js for flip book effect -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+  
   <style>
     :root {
       --primary-olive: #556b2f;
@@ -629,25 +635,55 @@
       padding: 2rem 1rem 8rem;
       gap: 2rem;
       position: relative;
-      min-height: calc(100vh - 150px);
+      overflow: visible;
     }
 
     .book-container {
-      width: 100%;
-      max-width: 1400px;
+      width: 90%;
+      max-width: 1200px;
       position: relative;
       background: transparent;
-      touch-action: pan-x pan-y;
+      touch-action: pan-y;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #flipbook {
+      width: 100%;
+      height: 80vh;
+      margin: 0 auto;
+    }
+    
+    #flipbook .page {
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    #flipbook .page img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    #flipbook .page.loading {
+      background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-sand) 100%);
     }
 
     .pages-wrapper {
       position: relative;
       width: 100%;
-      overflow: hidden;
+      overflow: visible;
       border-radius: var(--radius);
-      box-shadow: var(--shadow-xl);
-      background: white;
-      min-height: 500px;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -658,7 +694,6 @@
       height: auto;
       display: block;
       user-select: none;
-      touch-action: pan-x pan-y;
     }
 
     .page-slide {
@@ -1045,10 +1080,21 @@
 
       .main-content {
         padding: 1rem 10px 8rem;
+        overflow: visible;
       }
 
       .book-container {
         padding: 0;
+        width: 95%;
+      }
+      
+      #flipbook {
+        height: 60vh;
+      }
+
+      .pages-wrapper {
+        flex-direction: column;
+        gap: 0;
       }
 
       .custom-arrow {
@@ -1489,8 +1535,8 @@
         </button>
 
         <div class="book-container">
-          <div class="pages-wrapper" id="pagesWrapper">
-            <div class="page-loading">טוען דף...</div>
+          <div id="flipbook">
+            <!-- Pages will be dynamically added here -->
           </div>
         </div>
 
@@ -1548,10 +1594,11 @@
 
     let pdfDocument = null;
     let pageCache = {};
-    let currentPage = 0;
+    let currentPage = 1;
     let totalPages = 0;
     let isMobile = window.innerWidth <= 768;
     let isRendering = false;
+    let flipbookInitialized = false;
 
     window.addEventListener('load', () => {
       setTimeout(() => document.getElementById('customLoader').classList.add('hidden'), 1500);
@@ -1560,16 +1607,22 @@
     function openBook() {
       document.getElementById('customLoader').classList.remove('hidden');
       document.getElementById('landing-page').style.display = 'none';
+      document.getElementById('about-page').classList.remove('active');
       document.getElementById('book-viewer').classList.add('active');
       
       isMobile = window.innerWidth <= 768;
-      initBook();
+      
+      // אם הספר כבר טעון, פשוט הצג אותו
+      if (pdfDocument && totalPages > 0 && flipbookInitialized) {
+        setTimeout(() => {
+          document.getElementById('customLoader').classList.add('hidden');
+        }, 500);
+      } else {
+        initBook();
+      }
     }
 
     function goHome() {
-      pageCache = {};
-      pdfDocument = null;
-      
       document.getElementById('book-viewer').classList.remove('active');
       document.getElementById('about-page').classList.remove('active');
       document.getElementById('landing-page').style.display = 'block';
@@ -1606,15 +1659,13 @@
         console.log(`[Init] Starting (Retry ${retry})`);
         
         await loadPDFDocument();
-        setupPagesWrapper();
-        setupSwipeListeners();
-        await showPage(0);
+        await initializeFlipbook();
         
         setTimeout(() => {
           document.getElementById('customLoader').classList.add('hidden');
         }, 500);
         
-        console.log('[Init] ✅ Lazy loading enabled');
+        console.log('[Init] ✅ Flipbook ready');
       } catch (error) {
         console.error(`[Init] ❌`, error);
         
@@ -1651,19 +1702,15 @@
 
     async function renderPage(pageNum) {
       if (pageCache[pageNum]) {
-        console.log(`[Render] Cached page ${pageNum + 1}`);
+        console.log(`[Render] Cached page ${pageNum}`);
         return pageCache[pageNum];
       }
       
-      if (isRendering) return null;
-      
-      isRendering = true;
-      
       try {
-        console.log(`[Render] Page ${pageNum + 1}/${totalPages}...`);
+        console.log(`[Render] Page ${pageNum}/${totalPages}...`);
         
-        const page = await pdfDocument.getPage(pageNum + 1);
-        const scale = isMobile ? 2.5 : 3;
+        const page = await pdfDocument.getPage(pageNum);
+        const scale = isMobile ? 1.5 : 2;
         const viewport = page.getViewport({ scale });
         
         const canvas = document.createElement('canvas');
@@ -1678,147 +1725,103 @@
           intent: 'display'
         }).promise;
         
-        const imageUrl = canvas.toDataURL('image/jpeg', 0.9);
+        const imageUrl = canvas.toDataURL('image/jpeg', 0.92);
         pageCache[pageNum] = imageUrl;
-        cleanCache(pageNum);
         
-        console.log(`[Render] ✅ Page ${pageNum + 1}`);
+        console.log(`[Render] ✅ Page ${pageNum}`);
         
-        isRendering = false;
         return imageUrl;
       } catch (error) {
-        console.error(`[Render] ❌ Page ${pageNum + 1}:`, error);
-        isRendering = false;
+        console.error(`[Render] ❌ Page ${pageNum}:`, error);
         return null;
       }
     }
 
-    function cleanCache(currentPageNum) {
-      const cacheSize = Object.keys(pageCache).length;
-      const maxCache = isMobile ? 5 : 10;
+    async function initializeFlipbook() {
+      const $flipbook = $('#flipbook');
+      $flipbook.empty();
       
-      if (cacheSize > maxCache) {
-        console.log(`[Cache] Cleaning (${cacheSize} pages)`);
-        
-        Object.keys(pageCache).forEach(key => {
-          const pageNum = parseInt(key);
-          if (Math.abs(pageNum - currentPageNum) > 3) {
-            delete pageCache[pageNum];
+      // Create all pages
+      for (let i = 1; i <= totalPages; i++) {
+        $flipbook.append(`
+          <div class="page loading" data-page="${i}">
+            <div class="page-loading">טוען עמוד ${i}...</div>
+          </div>
+        `);
+      }
+      
+      // Initialize Turn.js
+      $flipbook.turn({
+        width: isMobile ? window.innerWidth * 0.95 : 1200,
+        height: isMobile ? window.innerHeight * 0.6 : window.innerHeight * 0.8,
+        autoCenter: true,
+        display: isMobile ? 'single' : 'double',
+        acceleration: true,
+        gradients: true,
+        elevation: 50,
+        when: {
+          turning: function(event, page, view) {
+            currentPage = page;
+            document.getElementById('pageInput').value = page;
+            updateNavigation();
+            playFlipSound();
+            
+            // Load pages on demand
+            loadPagesAround(page);
+          },
+          turned: function(event, page, view) {
+            console.log(`[Turn] Now on page ${page}`);
           }
-        });
-      }
-    }
-
-    function setupPagesWrapper() {
-      const wrapper = document.getElementById('pagesWrapper');
-      wrapper.innerHTML = '';
-      
-      for (let i = 0; i < totalPages; i++) {
-        const slide = document.createElement('div');
-        slide.className = 'page-slide';
-        slide.id = `page-${i}`;
-        wrapper.appendChild(slide);
-      }
-    }
-
-    async function showPage(pageNum) {
-      if (pageNum < 0 || pageNum >= totalPages || isRendering) return;
-      
-      console.log(`[Show] Page ${pageNum + 1}/${totalPages}`);
-      
-      const slides = document.querySelectorAll('.page-slide');
-      slides.forEach(s => s.classList.remove('active'));
-      
-      const currentSlide = document.getElementById(`page-${pageNum}`);
-      currentSlide.classList.add('active');
-      
-      if (!currentSlide.querySelector('img')) {
-        currentSlide.innerHTML = '<div class="page-loading">טוען דף...</div>';
-        
-        const imageUrl = await renderPage(pageNum);
-        
-        if (imageUrl) {
-          const img = document.createElement('img');
-          img.src = imageUrl;
-          img.className = 'page-image';
-          img.alt = `עמוד ${pageNum + 1}`;
-          currentSlide.innerHTML = '';
-          currentSlide.appendChild(img);
-        } else {
-          currentSlide.innerHTML = '<div class="page-loading">שגיאה בטעינת הדף</div>';
-        }
-      }
-      
-      currentPage = pageNum;
-      document.getElementById('pageInput').value = pageNum + 1;
-      updateNavigation();
-      playFlipSound();
-      
-      preloadNearbyPages(pageNum);
-    }
-
-    async function preloadNearbyPages(pageNum) {
-      const toPreload = [pageNum + 1, pageNum - 1, pageNum + 2];
-      
-      toPreload.forEach(async (p) => {
-        if (p >= 0 && p < totalPages && !pageCache[p] && !isRendering) {
-          setTimeout(() => renderPage(p), 300);
         }
       });
+      
+      flipbookInitialized = true;
+      
+      // Load first few pages
+      await loadPagesAround(1);
+    }
+
+    async function loadPagesAround(centerPage) {
+      const pagesToLoad = isMobile ? [centerPage, centerPage + 1, centerPage - 1] 
+                                   : [centerPage, centerPage + 1, centerPage - 1, centerPage + 2, centerPage - 2];
+      
+      for (const pageNum of pagesToLoad) {
+        if (pageNum >= 1 && pageNum <= totalPages && !pageCache[pageNum]) {
+          const imageUrl = await renderPage(pageNum);
+          if (imageUrl) {
+            const $page = $(`#flipbook .page[data-page="${pageNum}"]`);
+            $page.html(`<img src="${imageUrl}" alt="עמוד ${pageNum}">`);
+            $page.removeClass('loading');
+          }
+        }
+      }
     }
 
     function prevPage() {
-      if (currentPage > 0 && !isRendering) showPage(currentPage - 1);
+      $('#flipbook').turn('previous');
     }
 
     function nextPage() {
-      if (currentPage < totalPages - 1 && !isRendering) showPage(currentPage + 1);
+      $('#flipbook').turn('next');
     }
 
     function updateNavigation() {
       const prevBtn = document.getElementById('customPrev');
       const nextBtn = document.getElementById('customNext');
       
-      if (prevBtn) prevBtn.disabled = currentPage === 0 || isRendering;
-      if (nextBtn) nextBtn.disabled = currentPage >= totalPages - 1 || isRendering;
+      if (prevBtn) prevBtn.disabled = currentPage === 1;
+      if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
     }
 
     function handlePageInput(event) {
       if (event.key === 'Enter') {
         const pageNum = parseInt(event.target.value);
         if (pageNum >= 1 && pageNum <= totalPages) {
-          showPage(pageNum - 1);
+          $('#flipbook').turn('page', pageNum);
         } else {
           alert(`נא להזין מספר עמוד בין 1 ל-${totalPages}`);
-          event.target.value = currentPage + 1;
+          event.target.value = currentPage;
         }
-      }
-    }
-
-    function setupSwipeListeners() {
-      const wrapper = document.getElementById('pagesWrapper');
-      let touchStartX = 0, touchStartY = 0;
-      
-      wrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      wrapper.addEventListener('touchend', (e) => {
-        const deltaX = e.changedTouches[0].clientX - touchStartX;
-        const deltaY = e.changedTouches[0].clientY - touchStartY;
-        
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
-          deltaX > 0 ? prevPage() : nextPage();
-        }
-      }, { passive: true });
-      
-      if (!isMobile) {
-        document.addEventListener('keydown', (e) => {
-          if (e.target.id === 'pageInput') return;
-          if (e.key === 'ArrowLeft') { nextPage(); e.preventDefault(); }
-          if (e.key === 'ArrowRight') { prevPage(); e.preventDefault(); }
-        });
       }
     }
 
@@ -1839,7 +1842,18 @@
     window.addEventListener('resize', () => {
       clearTimeout(window.resizeTimeout);
       window.resizeTimeout = setTimeout(() => {
+        const wasMobile = isMobile;
         isMobile = window.innerWidth <= 768;
+        
+        // אם עברנו ממובייל למחשב או להיפך, אתחל מחדש את הספר
+        if (wasMobile !== isMobile && flipbookInitialized) {
+          const currentPageNum = currentPage;
+          $('#flipbook').turn('destroy');
+          flipbookInitialized = false;
+          initializeFlipbook().then(() => {
+            $('#flipbook').turn('page', currentPageNum);
+          });
+        }
       }, 300);
     });
     
@@ -1858,12 +1872,16 @@
       lastScroll = currentScroll;
     });
     
-    if (performance.memory) {
-      setInterval(() => {
-        const used = Math.round(performance.memory.usedJSHeapSize / 1048576);
-        console.log(`[Memory] ${used}MB (Cache: ${Object.keys(pageCache).length})`);
-      }, 10000);
-    }
+    // Keyboard navigation
+    $(document).keydown(function(e) {
+      if ($('#flipbook').data('ready')) {
+        if (e.keyCode === 37) { // Left arrow
+          $('#flipbook').turn('previous');
+        } else if (e.keyCode === 39) { // Right arrow
+          $('#flipbook').turn('next');
+        }
+      }
+    });
   </script>
 
 </body>
