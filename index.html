@@ -1,224 +1,34 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roots in the Plate | Choose Language | בחר שפה</title>
+  <meta name="description" content="Select your language to explore the culinary journey through Israeli culture">
   
-  <!-- SEO & Social Media Meta Tags -->
-  <title>Roots in the Plate | מסע קולינרי בתרבות ישראל</title>
-  <meta name="description" content="גלו את העושר התרבותי של ישראל דרך מתכונים מסורתיים מכל עדות ישראל. ספר מתכונים דיגיטלי אינטראקטיבי עם סיפורים וטעמים אותנטיים.">
-  <meta name="keywords" content="מתכונים ישראליים, אוכל מסורתי, עדות ישראל, תרבות ישראלית">
-  <meta name="author" content="Roots in the Plate Team">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://agustivel.github.io/Roots-in-the-plate/">
-  <meta property="og:title" content="Roots in the Plate | מסע קולינרי בתרבות ישראל">
-  <meta property="og:description" content="גלו את העושר התרבותי של ישראל דרך מתכונים מסורתיים מכל עדות ישראל">
-  <meta property="og:image" content="https://agustivel.github.io/Roots-in-the-plate/og-image.jpg">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://agustivel.github.io/Roots-in-the-plate/">
-  <meta property="twitter:title" content="Roots in the Plate | מסע קולינרי בתרבות ישראל">
-  <meta property="twitter:description" content="גלו את העושר התרבותי של ישראל דרך מתכונים מסורתיים">
-  <meta property="twitter:image" content="https://agustivel.github.io/Roots-in-the-plate/og-image.jpg">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
-  
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
-  <!-- jQuery (required for Turn.js) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-  <!-- Turn.js for flip book effect -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    :root {
-      --primary-olive: #556b2f;
-      --primary-dark: #3d2b1f;
-      --accent-beige: #f5f5dc;
-      --accent-sand: #e8dcc8;
-      --accent-gold: #d4a574;
-      --white: #ffffff;
-      --light-bg: #fafaf8;
-      --shadow-sm: 0 2px 8px rgba(61, 43, 31, 0.08);
-      --shadow-md: 0 4px 16px rgba(61, 43, 31, 0.12);
-      --shadow-lg: 0 8px 32px rgba(61, 43, 31, 0.16);
-      --shadow-xl: 0 16px 48px rgba(61, 43, 31, 0.24);
-      --radius: 12px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    html { scroll-behavior: smooth; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Heebo', 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--light-bg);
-      overflow-x: hidden;
-      color: var(--primary-dark);
-      line-height: 1.6;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E🌿%3C/text%3E%3C/svg%3E"), auto;
-    }
-
-    a, button {
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E👆%3C/text%3E%3C/svg%3E"), pointer;
-    }
-
-    /* Navigation Menu - Smart & Unobtrusive */
-    .nav-menu {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      z-index: 1000;
-      opacity: 0.4;
-      transition: opacity 0.3s ease;
-    }
-
-    .nav-menu:hover {
-      opacity: 1;
-    }
-
-    .nav-menu.scrolled {
-      opacity: 1;
-    }
-
-    .nav-container {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      list-style: none;
-      background: rgba(85, 107, 47, 0.85);
-      backdrop-filter: blur(15px);
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      box-shadow: 0 4px 20px rgba(85, 107, 47, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-link {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: var(--transition);
-      cursor: pointer;
-      white-space: nowrap;
-      padding: 0.3rem 0.6rem;
-      border-radius: 20px;
-    }
-
-    .nav-link:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    /* Mobile Menu Toggle */
-    .menu-toggle {
-      display: none;
-      background: rgba(85, 107, 47, 0.85);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      font-size: 1.3rem;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(85, 107, 47, 0.25);
-      transition: var(--transition);
-    }
-
-    .menu-toggle:hover {
-      transform: scale(1.05);
-      background: rgba(85, 107, 47, 0.95);
-    }
-
-    .nav-mobile {
-      display: none;
-    }
-
-    /* Loader */
-    .custom-loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(135deg, var(--primary-olive) 0%, var(--primary-dark) 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .custom-loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader-pot {
-      width: 120px;
-      height: 120px;
-      position: relative;
-      animation: bounce 1.5s infinite;
-    }
-
-    .loader-pot i {
-      font-size: 120px;
-      color: var(--accent-gold);
-      filter: drop-shadow(0 8px 24px rgba(212, 165, 116, 0.4));
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .loader-text {
-      color: var(--white);
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-top: 2rem;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    /* Landing Page */
-    .landing-page {
+      font-family: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-sand) 100%);
-      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f5f5dc 0%, #e8dcc8 100%);
       overflow: hidden;
+      position: relative;
     }
 
+    /* Background Pattern */
     .bg-pattern {
       position: absolute;
       top: 0;
@@ -227,22 +37,22 @@
       height: 100%;
       opacity: 0.04;
       background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 40px, var(--primary-olive) 40px, var(--primary-olive) 80px);
+        repeating-linear-gradient(45deg, transparent, transparent 40px, #556b2f 40px, #556b2f 80px);
       pointer-events: none;
     }
 
+    /* Floating Icons */
     .floating-icon {
       position: absolute;
       font-size: 3rem;
-      opacity: 0.12;
-      color: var(--primary-olive);
+      opacity: 0.1;
       animation: float 8s ease-in-out infinite;
     }
 
-    .floating-icon:nth-child(1) { top: 10%; right: 8%; animation-delay: 0s; }
-    .floating-icon:nth-child(2) { top: 25%; left: 5%; animation-delay: 2s; }
-    .floating-icon:nth-child(3) { bottom: 25%; right: 10%; animation-delay: 4s; }
-    .floating-icon:nth-child(4) { bottom: 15%; left: 8%; animation-delay: 6s; }
+    .floating-icon:nth-child(2) { top: 10%; right: 8%; animation-delay: 0s; }
+    .floating-icon:nth-child(3) { top: 25%; left: 5%; animation-delay: 2s; }
+    .floating-icon:nth-child(4) { bottom: 25%; right: 10%; animation-delay: 4s; }
+    .floating-icon:nth-child(5) { bottom: 15%; left: 8%; animation-delay: 6s; }
 
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -251,119 +61,80 @@
       75% { transform: translateY(-15px) rotate(3deg); }
     }
 
-    .hero-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
+    .container {
+      text-align: center;
+      animation: fadeIn 0.8s ease-in;
       position: relative;
       z-index: 1;
+      padding: 2rem;
     }
 
-    .hero-header {
-      text-align: center;
-      margin-bottom: 5rem;
-      padding-top: 2rem;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .hero-title {
-      font-family: 'Heebo', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
+    .logo {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
-      color: var(--primary-dark);
-      margin-bottom: 2rem;
-      text-shadow: 2px 4px 12px rgba(61, 43, 31, 0.15);
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      padding: 0 1rem;
+      color: #3d2b1f;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
 
-    .hero-subtitle {
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      color: var(--primary-olive);
+    .subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: #556b2f;
       font-weight: 600;
-      margin-bottom: 2.5rem;
-      padding: 0 1rem;
-      line-height: 1.4;
+      margin-bottom: 3rem;
     }
 
-    .content-box {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: var(--radius);
-      padding: 3.5rem;
-      box-shadow: var(--shadow-xl);
-      margin-bottom: 3.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transition: var(--transition);
+    .language-options {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
 
-    .content-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(61, 43, 31, 0.2);
-    }
-
-    .content-title {
-      font-family: 'Heebo', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      color: var(--primary-dark);
-      margin-bottom: 2rem;
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    .content-text {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      line-height: 1.9;
-      color: var(--primary-dark);
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .content-text:last-child {
-      margin-bottom: 0;
-    }
-
-    .highlight-text {
-      color: var(--primary-olive);
-      font-weight: 700;
-      position: relative;
-      display: inline-block;
-    }
-
-    .highlight-text::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--accent-gold);
-      border-radius: 2px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      margin: 4rem 0;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.8);
+    .language-card {
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
-      border-radius: var(--radius);
-      padding: 3rem 2rem;
-      text-align: center;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px rgba(61, 43, 31, 0.15);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      min-width: 220px;
+      border: 2px solid transparent;
       position: relative;
       overflow: hidden;
     }
 
-    .feature-card::before {
+    .language-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -374,1515 +145,150 @@
       transition: left 0.6s ease;
     }
 
-    .feature-card:hover::before {
+    .language-card:hover::before {
       left: 100%;
     }
 
-    .feature-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--accent-gold);
+    .language-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(61, 43, 31, 0.25);
+      border-color: #d4a574;
     }
 
-    .feature-icon {
-      font-size: 4.5rem;
-      margin-bottom: 1.8rem;
-      color: var(--primary-olive);
-      filter: drop-shadow(0 4px 12px rgba(85, 107, 47, 0.2));
-      transition: var(--transition);
+    .language-card:active {
+      transform: translateY(-10px) scale(1.02);
     }
 
-    .feature-card:hover .feature-icon {
+    .flag {
+      font-size: 6rem;
+      line-height: 1;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+      transition: all 0.3s ease;
+    }
+
+    .language-card:hover .flag {
       transform: scale(1.15) rotate(5deg);
     }
 
-    .feature-title {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 1.2rem;
-      line-height: 1.3;
-    }
-
-    .feature-description {
-      font-size: 1.15rem;
-      color: #4a4a4a;
-      line-height: 1.8;
-    }
-
-    .cta-section {
-      text-align: center;
-      margin: 5rem 0 4rem;
-      position: relative;
-      padding: 2rem 0;
-    }
-
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      background: linear-gradient(135deg, var(--primary-olive) 0%, #4a5a28 100%);
-      color: var(--white);
-      font-size: 2.2rem;
-      font-weight: 800;
-      padding: 2rem 4.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 
-        0 12px 32px rgba(85, 107, 47, 0.4),
-        inset 0 -4px 0 rgba(0, 0, 0, 0.15);
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      font-family: 'Heebo', sans-serif;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .cta-button:hover::before {
-      left: 100%;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-6px) scale(1.05);
-      box-shadow: 
-        0 20px 48px rgba(85, 107, 47, 0.5),
-        inset 0 -4px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    .cta-icon {
-      font-size: 2.5rem;
-      animation: bounce-icon 2s infinite;
-    }
-
-    @keyframes bounce-icon {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-12px); }
-      60% { transform: translateY(-6px); }
-    }
-
-    .cta-subtext {
-      font-size: 1.4rem;
-      color: var(--primary-olive);
-      margin-top: 2rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    /* Book Viewer */
-    .book-viewer {
-      display: none;
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-sand) 100%);
-    }
-
-    .book-viewer.active {
-      display: block;
-    }
-
-    /* About Us Page */
-    .about-page {
-      display: none;
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-sand) 100%);
-    }
-
-    .about-page.active {
-      display: block;
-    }
-
-    .about-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .about-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .about-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      color: var(--primary-dark);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-subtitle {
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      color: var(--primary-olive);
-      font-weight: 600;
-    }
-
-    .about-content {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius);
-      padding: 3rem;
-      box-shadow: var(--shadow-xl);
-      margin-bottom: 3rem;
-    }
-
-    .about-section {
-      margin-bottom: 3rem;
-    }
-
-    .about-section:last-child {
-      margin-bottom: 0;
-    }
-
-    .about-section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .about-section-title i {
-      color: var(--primary-olive);
+    .language-name {
       font-size: 2rem;
-    }
-
-    .about-text {
-      font-size: 1.2rem;
-      line-height: 1.9;
-      color: var(--primary-dark);
-      margin-bottom: 1rem;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .team-member {
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: var(--radius);
-      transition: var(--transition);
-    }
-
-    .team-member:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .team-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .team-name {
       font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.5rem;
+      color: #3d2b1f;
+      transition: all 0.3s ease;
     }
 
-    .team-role {
-      color: var(--primary-olive);
-      font-size: 0.95rem;
+    .language-card:hover .language-name {
+      color: #556b2f;
     }
 
-    .app-container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .top-action-bar {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-md);
-      padding: 1.5rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 2px solid var(--accent-gold);
-      text-align: center;
-    }
-
-    .top-action-bar h1 {
-      color: var(--primary-dark);
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      font-weight: 800;
-      margin: 0;
-    }
-
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem 8rem;
-      gap: 2rem;
-      position: relative;
-      overflow: visible;
-    }
-
-    .book-container {
-      width: 90%;
-      max-width: 1200px;
-      position: relative;
-      background: transparent;
-      touch-action: pan-y;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #flipbook {
-      width: 100%;
-      height: 80vh;
-      margin: 0 auto;
-    }
-    
-    #flipbook .page {
-      width: 100%;
-      height: 100%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    #flipbook .page img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-    }
-    
-    #flipbook .page.loading {
-      background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-sand) 100%);
-    }
-
-    .pages-wrapper {
-      position: relative;
-      width: 100%;
-      overflow: visible;
-      border-radius: var(--radius);
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .page-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      user-select: none;
-    }
-
-    .page-slide {
-      display: none;
-      width: 100%;
-    }
-
-    .page-slide.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .page-loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 500px;
-      color: var(--primary-olive);
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    /* Navigation Arrows */
-    .custom-arrow {
-      display: flex !important;
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(85, 107, 47, 0.25);
-      backdrop-filter: blur(10px);
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      width: 60px;
-      height: 80px;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      z-index: 500;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(85, 107, 47, 0.15);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .custom-arrow.left {
-      left: 20px;
-    }
-
-    .custom-arrow.right {
-      right: 20px;
-    }
-
-    .custom-arrow:hover {
-      background: rgba(85, 107, 47, 0.7);
-      color: rgba(255, 255, 255, 1);
-      transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 8px 24px rgba(85, 107, 47, 0.3);
-    }
-
-    .custom-arrow:active {
-      transform: translateY(-50%) scale(0.98);
-    }
-
-    .custom-arrow:disabled {
-      opacity: 0.3;
-      pointer-events: none;
-      cursor: not-allowed;
-    }
-
-    /* Bottom Action Bar */
-    .bottom-action-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(85, 107, 47, 0.15);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 1.2rem 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      box-shadow: 0 -4px 20px rgba(85, 107, 47, 0.15);
-      z-index: 1000;
-      border-top: 1px solid rgba(85, 107, 47, 0.2);
-    }
-
-    .bottom-btn {
-      background: rgba(85, 107, 47, 0.9);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: var(--white);
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 700;
-      transition: var(--transition);
-      box-shadow: var(--shadow-md);
-      font-family: 'Heebo', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      min-width: 160px;
-      text-align: center;
-    }
-
-    .bottom-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-xl);
-      background: rgba(85, 107, 47, 1);
-    }
-
-    .bottom-btn:active {
-      transform: translateY(-1px);
-    }
-
-    .bottom-btn i {
-      font-size: 1.2rem;
-    }
-
-    /* Page Input */
-    .page-input-container {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 0.7rem 2rem;
-      border-radius: 30px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 1.2rem;
-      text-align: center;
-      box-shadow: inset 0 2px 6px rgba(61, 43, 31, 0.1);
-      border: 2px solid rgba(212, 165, 116, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      justify-content: center;
-    }
-
-    .page-input {
-      background: transparent;
-      border: none;
-      color: var(--primary-dark);
-      font-weight: 700;
-      font-size: 1.2rem;
-      width: 50px;
-      text-align: center;
-      font-family: 'Heebo', sans-serif;
-      outline: none;
-      padding: 0.2rem;
-      border-bottom: 2px solid transparent;
-      transition: var(--transition);
-    }
-
-    .page-input:focus {
-      border-bottom-color: var(--primary-olive);
-    }
-
-    .page-input::-webkit-inner-spin-button,
-    .page-input::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Footer */
-    .premium-footer {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-olive) 100%);
-      color: var(--white);
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-top: auto;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-logo {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-tagline {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-    }
-
-    .footer-divider {
-      width: 100px;
-      height: 3px;
-      background: var(--accent-gold);
-      margin: 2rem auto;
-      border-radius: 2px;
-    }
-
-    .footer-credits {
+    .language-description {
       font-size: 1rem;
-      opacity: 0.85;
-      margin-bottom: 1rem;
+      color: #666;
+      font-weight: 500;
     }
 
-    .footer-copyright {
-      font-size: 0.95rem;
-      opacity: 0.7;
+    /* Accessibility */
+    .language-card:focus {
+      outline: 3px solid #556b2f;
+      outline-offset: 5px;
     }
 
-    .footer-heart {
-      color: #ff6b6b;
-      animation: heartbeat 1.5s infinite;
+    .language-card:focus-visible {
+      outline: 3px solid #556b2f;
+      outline-offset: 5px;
     }
 
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
-    /* Instagram Link in Footer */
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-      color: white;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 1.5rem 0;
-      transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(188, 24, 136, 0.3);
-    }
-
-    .instagram-link:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(188, 24, 136, 0.5);
-    }
-
-    .instagram-link i {
-      font-size: 1.5rem;
-    }
-
-    /* Floating Instagram Button */
-    .floating-instagram {
-      position: fixed;
-      bottom: 120px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
-      z-index: 999;
-      transition: var(--transition);
-      text-decoration: none;
-      animation: float-instagram 3s ease-in-out infinite;
-    }
-
-    .floating-instagram:hover {
-      transform: scale(1.15);
-      box-shadow: 0 8px 30px rgba(188, 24, 136, 0.6);
-    }
-
-    .floating-instagram i {
-      color: white;
-      font-size: 1.8rem;
-    }
-
-    @keyframes float-instagram {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Mobile */
+    /* Responsive */
     @media (max-width: 768px) {
-      body, a, button {
-        cursor: default !important;
+      .logo {
+        font-size: 4rem;
       }
 
-      .hero-section {
-        padding: 2rem 20px;
-      }
-
-      .hero-header {
-        margin-bottom: 3rem;
-        padding-top: 1rem;
-      }
-
-      .hero-title {
-        margin-bottom: 1.5rem;
-        padding: 0 0.5rem;
-      }
-
-      .hero-subtitle {
-        margin-bottom: 2rem;
-        padding: 0 0.5rem;
-      }
-
-      .content-box {
-        padding: 2.5rem 1.5rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .content-title {
-        margin-bottom: 1.5rem;
-      }
-
-      .content-text {
-        margin-bottom: 1.2rem;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
+      .language-options {
+        flex-direction: column;
         gap: 2rem;
-        margin: 3rem 0;
+        padding: 0 1rem;
       }
 
-      .feature-card {
-        padding: 2.5rem 1.5rem;
+      .language-card {
+        padding: 2.5rem 2rem;
+        min-width: 100%;
+        max-width: 350px;
       }
 
-      .feature-icon {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
+      .flag {
+        font-size: 5rem;
       }
 
-      .feature-title {
-        font-size: 1.5rem;
-      }
-
-      .cta-section {
-        padding: 1.5rem 20px;
-        margin: 3rem 0 2rem;
-      }
-
-      .cta-button {
-        width: 100%;
-        font-size: 1.4rem;
-        padding: 1.2rem 2rem;
+      .language-name {
+        font-size: 1.8rem;
       }
 
       .floating-icon {
         font-size: 2rem;
       }
+    }
 
-      .loader-pot {
-        width: 80px;
-        height: 80px;
-      }
-
-      .loader-pot i {
-        font-size: 80px;
-      }
-
-      .loader-text {
-        font-size: 1.2rem;
-      }
-
-      .top-action-bar {
-        padding: 1rem 15px;
-      }
-
-      .top-action-bar h1 {
-        font-size: 1.1rem;
-      }
-
-      .main-content {
-        padding: 1rem 10px 8rem;
-        overflow: visible;
-      }
-
-      .book-container {
-        padding: 0;
-        width: 95%;
-      }
-      
-      #flipbook {
-        height: 60vh;
-      }
-
-      .pages-wrapper {
-        flex-direction: column;
-        gap: 0;
-      }
-
-      .custom-arrow {
-        width: 50px;
-        height: 70px;
-        font-size: 1.8rem;
-        background: rgba(85, 107, 47, 0.2);
-        color: rgba(255, 255, 255, 0.6);
-      }
-
-      .custom-arrow.left {
-        left: 10px;
-      }
-
-      .custom-arrow.right {
-        right: 10px;
-      }
-      
-      .custom-arrow:hover {
-        background: rgba(85, 107, 47, 0.6);
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .bottom-action-bar {
-        padding: 1rem 1rem;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .bottom-btn {
-        flex: 1;
-        min-width: 130px;
-        padding: 0.9rem 1.5rem;
-        font-size: 1rem;
-      }
-
-      .page-input-container {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-      }
-
-      .page-input {
-        font-size: 1rem;
-        width: 40px;
-      }
-
-      .premium-footer {
-        padding: 2rem 20px;
-      }
-
-      .footer-logo {
-        font-size: 2.5rem;
-      }
-
-      .instagram-link {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-      }
-
-      .instagram-link i {
-        font-size: 1.3rem;
-      }
-
-      .floating-instagram {
-        width: 50px;
-        height: 50px;
-        bottom: 100px;
-        left: 10px;
-      }
-
-      .floating-instagram i {
-        font-size: 1.5rem;
-      }
-
-      .top-instagram-icon {
-        width: 38px;
-        height: 38px;
-        left: 1rem;
-      }
-
-      .top-instagram-icon i {
-        font-size: 1.2rem;
-      }
-
-      /* Mobile Navigation */
-      .nav-menu {
-        top: 1rem;
-        right: 1rem;
-        opacity: 1;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-mobile {
-        display: none;
-        position: fixed;
-        top: 70px;
-        right: 1rem;
-        background: rgba(85, 107, 47, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 1.2rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 30px rgba(85, 107, 47, 0.3);
-        z-index: 999;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        min-width: 180px;
-      }
-
-      .nav-mobile.active {
-        display: block;
-        animation: slideDown 0.3s ease;
-      }
-
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .nav-mobile-links {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .nav-mobile-link {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 0.7rem 1rem;
-        border-radius: 10px;
-        transition: var(--transition);
-        display: block;
-        text-align: center;
-      }
-
-      .nav-mobile-link:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      .about-container {
-        padding: 2rem 1rem;
-      }
-
-      .about-content {
+    @media (max-width: 480px) {
+      .language-card {
         padding: 2rem 1.5rem;
       }
 
-      .team-grid {
-        grid-template-columns: 1fr;
+      .flag {
+        font-size: 4.5rem;
       }
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    ::selection {
-      background: var(--accent-gold);
-      color: var(--white);
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation Menu - Minimalist -->
-  <nav class="nav-menu" id="navMenu">
-    <div class="nav-container">
-      <ul class="nav-links">
-        <li><a class="nav-link" onclick="showHome()">בית</a></li>
-        <li><a class="nav-link" onclick="openBook()">ספר מתכונים</a></li>
-        <li><a class="nav-link" onclick="showAbout()">על הפרויקט</a></li>
-      </ul>
-
-      <button class="menu-toggle" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="nav-mobile" id="navMobile">
-      <ul class="nav-mobile-links">
-        <li><a class="nav-mobile-link" onclick="showHome(); toggleMobileMenu();">בית</a></li>
-        <li><a class="nav-mobile-link" onclick="openBook(); toggleMobileMenu();">ספר מתכונים</a></li>
-        <li><a class="nav-mobile-link" onclick="showAbout(); toggleMobileMenu();">על הפרויקט</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="custom-loader" id="customLoader">
-    <div class="loader-pot">
-      <i class="fas fa-mortar-pestle"></i>
-    </div>
-    <div class="loader-text">טוען את הספר...</div>
-  </div>
-
-  <div class="landing-page" id="landing-page">
-    <div class="bg-pattern"></div>
-    
-    <i class="fas fa-leaf floating-icon"></i>
-    <i class="fas fa-seedling floating-icon"></i>
-    <i class="fas fa-pepper-hot floating-icon"></i>
-    <i class="fas fa-drumstick-bite floating-icon"></i>
-
-    <div class="hero-section">
-      <div class="hero-header" data-aos="fade-down" data-aos-duration="1000">
-        <h1 class="hero-title">Roots in the Plate</h1>
-        <p class="hero-subtitle">מסע קולינרי בתרבות ישראל</p>
-      </div>
-
-      <div class="content-box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-        <h2 class="content-title">גלו את העושר התרבותי של ישראל דרך הטעם</h2>
-        <p class="content-text">
-          ברוכים הבאים למסע קולינרי ייחודי דרך מטבחי עדות ישראל.
-          כל מתכון בספר זה הוא חלון לתרבות, למסורת ולזיכרון קולקטיבי.
-        </p>
-        <p class="content-text">
-          מהתימנים ועד המרוקאים, 
-          מהאתיופים ועד הפולנים - כל עדה תרמה את חלקה לפסיפס התרבותי והקולינרי של ישראל.
-        </p>
-        <p class="content-text">
-          <span class="highlight-text">זהו לא רק ספר מתכונים</span> - זהו סיפור על שורשים, על זהות, ועל הקסם של האוכל המסורתי
-          שעובר מדור לדור.
-        </p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-          <i class="fas fa-utensils feature-icon"></i>
-          <h3 class="feature-title">מתכונים אותנטיים</h3>
-          <p class="feature-description">מנות מסורתיות משמורות במשך דורות מכל עדות ישראל</p>
-        </div>
-
-        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <i class="fas fa-book-open feature-icon"></i>
-          <h3 class="feature-title">סיפורים תרבותיים</h3>
-          <p class="feature-description">כל מתכון מלווה בסיפור עשיר על המסורת והתרבות</p>
-        </div>
-
-        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-          <i class="fas fa-globe-americas feature-icon"></i>
-          <h3 class="feature-title">מסע היסטורי</h3>
-          <p class="feature-description">טיול קולינרי מרתק דרך ההיסטוריה של עם ישראל</p>
-        </div>
-      </div>
-
-      <div class="cta-section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-        <button class="cta-button" onclick="openBook()">
-          לצפייה בספר הדיגיטלי
-          <i class="fas fa-book-reader cta-icon"></i>
-        </button>
-        <p class="cta-subtext">התחילו את המסע הקולינרי שלכם עכשיו</p>
-      </div>
-    </div>
-
-    <footer class="premium-footer" data-aos="fade-up" data-aos-duration="1000">
-      <div class="footer-content">
-        <div class="footer-logo">🌿</div>
-        <h3 class="footer-title">Roots in the Plate</h3>
-        <p class="footer-tagline">מסע קולינרי בתרבות ישראל</p>
-        
-        <!-- Instagram Link -->
-        <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="instagram-link">
-          <i class="fab fa-instagram"></i>
-          <span>עקבו אחרינו באינסטגרם</span>
-        </a>
-        
-        <div class="footer-divider"></div>
-        <p class="footer-credits">
-פרויקט תלמידי בית ספר גוונים במסגרת תוכנית teen spirit        </p>
-        <p class="footer-copyright">
-          נוצר ב <span class="footer-heart">❤️</span>  © 2026 Roots in the Plate Team
-        </p>
-      </div>
-    </footer>
-  </div>
-
-  <!-- About Us Page -->
-  <div class="about-page" id="about-page">
-    <div class="about-container">
-      <div class="about-header" data-aos="fade-down">
-        <h1 class="about-title">על הפרויקט</h1>
-        <p class="about-subtitle">מסע קולינרי שמספר את סיפורה של ישראל</p>
-      </div>
-
-      <div class="about-content" data-aos="fade-up">
-        <div class="about-section">
-          <h2 class="about-section-title">
-            <i class="fas fa-heart"></i>
-            למה קולינריה?
-          </h2>
-          <p class="about-text">
-            אוכל הוא השפה האוניברסלית שכולם מבינים. לא משנה מאיפה אתה מגיע, מה השפה שלך
-            או מה התרבות שלך - כולם אוכלים, כולם מתחברים לטעמים, וכולם יודעים שמאחורי כל מנה
-            יש סיפור.
-          </p>
-          <p class="about-text">
-            בחרנו ליצור ספר מתכונים דיגיטלי כי רצינו להראות את ישראל בצורה שונה -
-            לא דרך פוליטיקה או חדשות, אלא דרך המטבח המגוון והעשיר שלנו.
-            כשמישהו מבשל חמין תימני או קובה עיראקית, הוא לא רק מכין אוכל -
-            הוא חווה חתיכה מהתרבות הישראלית.
-          </p>
-        </div>
-
-        <div class="about-section">
-          <h2 class="about-section-title">
-            <i class="fas fa-globe"></i>
-            הסיפור של ישראל
-          </h2>
-          <p class="about-text">
-            ישראל היא מדינה ייחודית - מדינה שקלטה יהודים מכל רחבי העולם.
-            כל עדה הביאה איתה את המטבח שלה, את המתכונים שעברו מדור לדור,
-            ואת הטעמים של הבית.
-          </p>
-          <p class="about-text">
-            מתכונים תימניים שהגיעו מתימן, מרוקאים שהגיעו ממרוקו, אתיופיים מאתיופיה,
-            פולניים מפולין - כל המתכונים האלה נפגשו כאן, בישראל, ויצרו את הפסיפס
-            הקולינרי המדהים שלנו.
-          </p>
-          <p class="about-text">
-            זה הסיפור של ישראל במטבח - מדינה שמאחדת תרבויות שונות תחת קורת גג אחת,
-            שומרת על המסורות של כל עדה ועדה, ויוצרת משהו חדש ומיוחד.
-          </p>
-        </div>
-
-        <div class="about-section">
-          <h2 class="about-section-title">
-            <i class="fas fa-book-open"></i>
-            על הספר
-          </h2>
-          <p class="about-text">
-            "Roots in the Plate" (שורשים בצלחת) הוא ספר מתכונים דיגיטלי שמציג
-            מתכונים מסורתיים מכל עדות ישראל. כל מתכון מלווה בסיפור על המקור שלו,
-            על התרבות שממנה הגיע, ועל המשמעות שלו.
-          </p>
-          <p class="about-text">
-            הספר מאפשר לכל אחד בעולם לחוות את המגוון התרבותי של ישראל דרך המטבח -
-            להבין שישראל היא לא רק מקום אחד עם תרבות אחת, אלא פסיפס עשיר של תרבויות,
-            שפות, מסורות וטעמים.
-          </p>
-        </div>
-
-        <div class="about-section">
-          <h2 class="about-section-title">
-            <i class="fas fa-hands-helping"></i>
-            למה זה חשוב?
-          </h2>
-          <p class="about-text">
-            בעולם של היום, הרבה אנשים לא באמת מכירים את ישראל. הם רואים כותרות בחדשות
-            אבל לא מכירים את האנשים, את התרבות, את החיים האמיתיים כאן.
-          </p>
-          <p class="about-text">
-            דרך המתכונים האלה, אנחנו מראים את הצד האנושי והתרבותי של ישראל.
-            אנחנו מספרים סיפורים שמחברים, שמראים את העושר והמגוון,
-            ושעוזרים לאנשים להבין שישראל היא מדינה של אנשים - אנשים עם סיפורים,
-            עם מסורות, ועם מתכונים שעוברים מדור לדור.
-          </p>
-          <p class="about-text">
-            כשמישהו בעולם מבשל מתכון מהספר שלנו, הוא לא רק מכין ארוחה -
-            הוא מתחבר לסיפור של ישראל בצורה אותנטית ואמיתית.
-          </p>
-        </div>
-
-        <div class="about-section">
-          <h2 class="about-section-title">
-            <i class="fas fa-star"></i>
-            המטרה שלנו
-          </h2>
-          <p class="about-text">
-            אנחנו רוצים שאנשים בכל העולם יכירו את ישראל דרך המטבח המדהים שלנו.
-            שיבינו את הגיוון התרבותי שלנו. שיראו שישראל היא מדינה של תרבויות רבות
-            שחיות ביחד, שומרות על המסורות שלהן, ויוצרות משהו חדש ומיוחד.
-          </p>
-          <p class="about-text">
-            אנחנו מאמינים שכשמסבירים את ישראל דרך אוכל, דרך סיפורים אנושיים ותרבותיים,
-            אנשים יכולים להתחבר ולהבין אותנו טוב יותר.
-            וזה מה שהפרויקט הזה עושה - מספר את הסיפור של ישראל בצורה שכולם יכולים להתחבר אליה.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <footer class="premium-footer">
-      <div class="footer-content">
-        <div class="footer-logo">🌿</div>
-        <h3 class="footer-title">Roots in the Plate</h3>
-        <p class="footer-tagline">מסע קולינרי בתרבות ישראל</p>
-        
-        <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="instagram-link">
-          <i class="fab fa-instagram"></i>
-          <span>עקבו אחרינו באינסטגרם</span>
-        </a>
-        
-        <div class="footer-divider"></div>
-        <p class="footer-credits">
-          פרויקט תלמידי במסגרת קורס תכנות ועיצוב UI/UX
-        </p>
-        <p class="footer-copyright">
-          נוצר עם <span class="footer-heart">❤️</span> בישראל © 2025 Roots in the Plate Team
-        </p>
-      </div>
-    </footer>
-  </div>
-
-  <div class="book-viewer" id="book-viewer">
-    <div class="app-container">
-      
-      <!-- Floating Instagram Button -->
-      <a href="https://www.instagram.com/shorashim.onplate?igsh=NnlqN2pvcXF0OTFv" target="_blank" class="floating-instagram" title="עקבו אחרינו באינסטגרם">
-        <i class="fab fa-instagram"></i>
-      </a>
-      
-      <div class="top-action-bar">
-        <h1>Roots in the Plate - ספר המתכונים הדיגיטלי</h1>
-      </div>
-
-      <div class="main-content">
-        
-        <button class="custom-arrow left" id="customPrev" onclick="prevPage()" title="עמוד קודם">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <button class="custom-arrow right" id="customNext" onclick="nextPage()" title="עמוד הבא">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-
-        <div class="book-container">
-          <div id="flipbook">
-            <!-- Pages will be dynamically added here -->
-          </div>
-        </div>
-
-        <div class="page-input-container">
-          <span>עמוד</span>
-          <input 
-            type="number" 
-            id="pageInput" 
-            class="page-input" 
-            min="1" 
-            value="1"
-            onkeypress="handlePageInput(event)"
-            title="הקלד מספר עמוד ולחץ Enter"
-          >
-          <span>מתוך</span>
-          <span id="total-pages">--</span>
-        </div>
-      </div>
-
-      <div class="bottom-action-bar">
-        <button class="bottom-btn" onclick="goHome()">
-          <i class="fas fa-home"></i>
-          <span>חזרה לבית</span>
-        </button>
-        <button class="bottom-btn" onclick="downloadPDF()">
-          <i class="fas fa-download"></i>
-          <span>הורדה</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <div class="bg-pattern"></div>
   
+  <div class="floating-icon">🌿</div>
+  <div class="floating-icon">🍃</div>
+  <div class="floating-icon">🌶️</div>
+  <div class="floating-icon">🍲</div>
+  
+  <div class="container">
+    <div class="logo">🌿</div>
+    <h1>Roots in the Plate</h1>
+    <p class="subtitle">מסע קולינרי בתרבות ישראל | A Culinary Journey</p>
+    
+    <div class="language-options">
+      <a href="hebrew.html" class="language-card" role="button" aria-label="עברית - Hebrew Language">
+        <div class="flag">🇮🇱</div>
+        <div class="language-name">עברית</div>
+        <div class="language-description">Hebrew</div>
+      </a>
+
+      <a href="english.html" class="language-card" role="button" aria-label="English - English Language">
+        <div class="flag">🇺🇸</div>
+        <div class="language-name">English</div>
+        <div class="language-description">אנגלית</div>
+      </a>
+    </div>
+  </div>
+
   <script>
-    /* LAZY LOADING - MOBILE OPTIMIZED */
-    AOS.init({ once: true, mirror: false, duration: 800 });
-    
-    const WORKER_URLS = [
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js',
-      'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js'
-    ];
-    
-    let workerAttempt = 0;
-    function initWorker() {
-      pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER_URLS[workerAttempt % WORKER_URLS.length];
-      console.log(`[Worker] ${WORKER_URLS[workerAttempt % WORKER_URLS.length]}`);
-    }
-    initWorker();
+    // Keyboard navigation support
+    document.querySelectorAll('.language-card').forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
 
-    const flipSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
-    flipSound.volume = 0.3;
-
-    let pdfDocument = null;
-    let pageCache = {};
-    let currentPage = 1;
-    let totalPages = 0;
-    let isMobile = window.innerWidth <= 768;
-    let isRendering = false;
-    let flipbookInitialized = false;
-
+    // Preload pages for faster navigation
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('customLoader').classList.add('hidden'), 1500);
-    });
-
-    function openBook() {
-      document.getElementById('customLoader').classList.remove('hidden');
-      document.getElementById('landing-page').style.display = 'none';
-      document.getElementById('about-page').classList.remove('active');
-      document.getElementById('book-viewer').classList.add('active');
-      
-      isMobile = window.innerWidth <= 768;
-      
-      // אם הספר כבר טעון, פשוט הצג אותו
-      if (pdfDocument && totalPages > 0 && flipbookInitialized) {
-        setTimeout(() => {
-          document.getElementById('customLoader').classList.add('hidden');
-        }, 500);
-      } else {
-        initBook();
-      }
-    }
-
-    function goHome() {
-      document.getElementById('book-viewer').classList.remove('active');
-      document.getElementById('about-page').classList.remove('active');
-      document.getElementById('landing-page').style.display = 'block';
-      document.getElementById('navMenu').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showHome() {
-      document.getElementById('book-viewer').classList.remove('active');
-      document.getElementById('about-page').classList.remove('active');
-      document.getElementById('landing-page').style.display = 'block';
-      document.getElementById('navMenu').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showAbout() {
-      document.getElementById('landing-page').style.display = 'none';
-      document.getElementById('book-viewer').classList.remove('active');
-      document.getElementById('about-page').classList.add('active');
-      document.getElementById('navMenu').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Reinitialize AOS for about page
-      setTimeout(() => AOS.refresh(), 100);
-    }
-
-    function toggleMobileMenu() {
-      const navMobile = document.getElementById('navMobile');
-      navMobile.classList.toggle('active');
-    }
-
-    async function initBook(retry = 0) {
-      try {
-        console.log(`[Init] Starting (Retry ${retry})`);
-        
-        await loadPDFDocument();
-        await initializeFlipbook();
-        
-        setTimeout(() => {
-          document.getElementById('customLoader').classList.add('hidden');
-        }, 500);
-        
-        console.log('[Init] ✅ Flipbook ready');
-      } catch (error) {
-        console.error(`[Init] ❌`, error);
-        
-        if (retry < 2) {
-          console.warn('[Init] 🔄 Retrying...');
-          workerAttempt++;
-          initWorker();
-          await new Promise(r => setTimeout(r, 1000));
-          return initBook(retry + 1);
-        } else {
-          document.getElementById('customLoader').classList.add('hidden');
-          alert(`שגיאה בטעינת הספר.\n\nנא לוודא שקובץ book.pdf קיים.\n\nשגיאה: ${error.message}`);
-        }
-      }
-    }
-
-    async function loadPDFDocument() {
-      console.log('[PDF] Loading...');
-      
-      const loadingTask = pdfjsLib.getDocument({
-        url: 'book.pdf',
-        cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
-        cMapPacked: true
+      const links = ['roots-hebrew.html', 'roots-english.html'];
+      links.forEach(link => {
+        const preload = document.createElement('link');
+        preload.rel = 'prefetch';
+        preload.href = link;
+        document.head.appendChild(preload);
       });
-      
-      pdfDocument = await loadingTask.promise;
-      totalPages = pdfDocument.numPages;
-      
-      console.log(`[PDF] ✅ ${totalPages} pages`);
-      
-      document.getElementById('total-pages').textContent = totalPages;
-      document.getElementById('pageInput').max = totalPages;
-    }
-
-    async function renderPage(pageNum) {
-      if (pageCache[pageNum]) {
-        console.log(`[Render] Cached page ${pageNum}`);
-        return pageCache[pageNum];
-      }
-      
-      try {
-        console.log(`[Render] Page ${pageNum}/${totalPages}...`);
-        
-        const page = await pdfDocument.getPage(pageNum);
-        const scale = isMobile ? 1.5 : 2;
-        const viewport = page.getViewport({ scale });
-        
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d', { alpha: false });
-        
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        
-        await page.render({
-          canvasContext: context,
-          viewport: viewport,
-          intent: 'display'
-        }).promise;
-        
-        const imageUrl = canvas.toDataURL('image/jpeg', 0.92);
-        pageCache[pageNum] = imageUrl;
-        
-        console.log(`[Render] ✅ Page ${pageNum}`);
-        
-        return imageUrl;
-      } catch (error) {
-        console.error(`[Render] ❌ Page ${pageNum}:`, error);
-        return null;
-      }
-    }
-
-    async function initializeFlipbook() {
-      const $flipbook = $('#flipbook');
-      $flipbook.empty();
-      
-      // Create all pages
-      for (let i = 1; i <= totalPages; i++) {
-        $flipbook.append(`
-          <div class="page loading" data-page="${i}">
-            <div class="page-loading">טוען עמוד ${i}...</div>
-          </div>
-        `);
-      }
-      
-      // Initialize Turn.js
-      $flipbook.turn({
-        width: isMobile ? window.innerWidth * 0.95 : 1200,
-        height: isMobile ? window.innerHeight * 0.6 : window.innerHeight * 0.8,
-        autoCenter: true,
-        display: isMobile ? 'single' : 'double',
-        acceleration: true,
-        gradients: true,
-        elevation: 50,
-        when: {
-          turning: function(event, page, view) {
-            currentPage = page;
-            document.getElementById('pageInput').value = page;
-            updateNavigation();
-            playFlipSound();
-            
-            // Load pages on demand
-            loadPagesAround(page);
-          },
-          turned: function(event, page, view) {
-            console.log(`[Turn] Now on page ${page}`);
-          }
-        }
-      });
-      
-      flipbookInitialized = true;
-      
-      // Load first few pages
-      await loadPagesAround(1);
-    }
-
-    async function loadPagesAround(centerPage) {
-      const pagesToLoad = isMobile ? [centerPage, centerPage + 1, centerPage - 1] 
-                                   : [centerPage, centerPage + 1, centerPage - 1, centerPage + 2, centerPage - 2];
-      
-      for (const pageNum of pagesToLoad) {
-        if (pageNum >= 1 && pageNum <= totalPages && !pageCache[pageNum]) {
-          const imageUrl = await renderPage(pageNum);
-          if (imageUrl) {
-            const $page = $(`#flipbook .page[data-page="${pageNum}"]`);
-            $page.html(`<img src="${imageUrl}" alt="עמוד ${pageNum}">`);
-            $page.removeClass('loading');
-          }
-        }
-      }
-    }
-
-    function prevPage() {
-      $('#flipbook').turn('previous');
-    }
-
-    function nextPage() {
-      $('#flipbook').turn('next');
-    }
-
-    function updateNavigation() {
-      const prevBtn = document.getElementById('customPrev');
-      const nextBtn = document.getElementById('customNext');
-      
-      if (prevBtn) prevBtn.disabled = currentPage === 1;
-      if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
-    }
-
-    function handlePageInput(event) {
-      if (event.key === 'Enter') {
-        const pageNum = parseInt(event.target.value);
-        if (pageNum >= 1 && pageNum <= totalPages) {
-          $('#flipbook').turn('page', pageNum);
-        } else {
-          alert(`נא להזין מספר עמוד בין 1 ל-${totalPages}`);
-          event.target.value = currentPage;
-        }
-      }
-    }
-
-    function playFlipSound() {
-      try {
-        flipSound.currentTime = 0;
-        flipSound.play().catch(() => {});
-      } catch(e) {}
-    }
-
-    function downloadPDF() {
-      const link = document.createElement('a');
-      link.href = 'book.pdf';
-      link.download = 'Roots_in_the_Plate.pdf';
-      link.click();
-    }
-
-    window.addEventListener('resize', () => {
-      clearTimeout(window.resizeTimeout);
-      window.resizeTimeout = setTimeout(() => {
-        const wasMobile = isMobile;
-        isMobile = window.innerWidth <= 768;
-        
-        // אם עברנו ממובייל למחשב או להיפך, אתחל מחדש את הספר
-        if (wasMobile !== isMobile && flipbookInitialized) {
-          const currentPageNum = currentPage;
-          $('#flipbook').turn('destroy');
-          flipbookInitialized = false;
-          initializeFlipbook().then(() => {
-            $('#flipbook').turn('page', currentPageNum);
-          });
-        }
-      }, 300);
-    });
-    
-    // Smart navigation - fade in on scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const navMenu = document.getElementById('navMenu');
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > 100) {
-        navMenu.classList.add('scrolled');
-      } else {
-        navMenu.classList.remove('scrolled');
-      }
-      
-      lastScroll = currentScroll;
-    });
-    
-    // Keyboard navigation
-    $(document).keydown(function(e) {
-      if ($('#flipbook').data('ready')) {
-        if (e.keyCode === 37) { // Left arrow
-          $('#flipbook').turn('previous');
-        } else if (e.keyCode === 39) { // Right arrow
-          $('#flipbook').turn('next');
-        }
-      }
     });
   </script>
-
 </body>
 </html>
